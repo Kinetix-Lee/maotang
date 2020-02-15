@@ -1,0 +1,1 @@
+export { getMainStore } from "./MainStore"
