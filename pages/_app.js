@@ -12,7 +12,7 @@ configure({ enforceActions: "observed" })
 useStaticRendering(isServer) // NOT `true` value
 
 function isNight() {
-  //return new Date().getHours() >= 18 || new Date().getHours() <= 6
+  return new Date().getHours() >= 18 || new Date().getHours() <= 6
   return false
 }
 
