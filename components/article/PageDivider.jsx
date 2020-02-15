@@ -51,7 +51,12 @@ class PageDivider extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="block page-divider">
+        <div
+          className={
+            "block page-divider " +
+            (this.state.isXsWindow ? " small-divider" : "")
+          }
+        >
           <Pagination
             size={this.state.isXsWindow ? "small" : ""}
             defaultCurrent={6}
@@ -103,9 +108,9 @@ class PageDivider extends React.Component {
       }
     }
 
-    this.setState({
-      isXsWindow: window.innerWidth <= 768 ? 1 : -1
-    })
+    // this.setState({
+    //   isXsWindow: window.innerWidth <= 768 ? 1 : 0
+    // })
   }
 }
 
