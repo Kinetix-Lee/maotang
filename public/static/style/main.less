@@ -4,6 +4,69 @@
   box-sizing: border-box;
 }
 
+.page-divider {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  filter: grayscale(100%) !important;
+  filter: #282c32 !important;
+
+  user-select: none !important;
+}
+
+.zent-btn {
+  background-color: inherit !important;
+}
+
+.container.light .zent-btn-primary {
+  border: none !important;
+  font-weight: bold;
+}
+
+.container.dark .page-divider {
+  opacity: 0.6;
+}
+
+nav.nav-bar {
+  width: 100%;
+  border-bottom: 1px;
+  padding: 4em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  user-select: none;
+}
+
+.nav {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.nav-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+ul.nav-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  line-height: 4rem;
+}
+
+ul.nav-list li {
+  margin: 0 0.5rem;
+}
+
 a {
   text-decoration: none;
 }

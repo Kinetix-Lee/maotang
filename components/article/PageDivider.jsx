@@ -1,6 +1,8 @@
 import React from "react"
 import { Pagination } from "antd"
 import { observer, inject } from "mobx-react"
+import { parseUrl } from "../../public/static/js/tools"
+import Router from "next/router"
 
 @inject("mainStore")
 @observer
@@ -16,28 +18,15 @@ class PageDivider extends React.Component {
   }
 
   onChange = e => {
-    // if (e.current) {
-    //   this.setState({
-    //     current: e.current
-    //   })
-    //   this.props.router.push("/page/" + e.current)
-    // }
-  }
+    if (e) {
+      let lastPage = this.state.current
+      this.setState({
+        current: e
+      })
 
-  componentWillReceiveProps() {
-    if (
-      this.props.router &&
-      this.props.router.action &&
-      this.props.router.action === "PUSH" &&
-      this.props.router.location.pathname
-    ) {
-      let page = this.props.router.location.pathname
-      if (typeof page == "string") {
-        page = page.replace("/page/", "")
-      }
-      if (page >= 1) {
-        this.getUrlPage(page * 1)
-      }
+      this.props.mainStore.getArticleList(e * 1)
+
+      history.pushState({}, "", e) /* 用 history 实现路由软刷新 */
     }
   }
 
@@ -59,58 +48,35 @@ class PageDivider extends React.Component {
         >
           <Pagination
             size={this.state.isXsWindow ? "small" : ""}
-            defaultCurrent={6}
-            total={500}
+            current={this.state.current}
+            defaultCurrent={1}
+            defaultPageSize={10}
+            total={
+              this.props.mainStore.articles
+                ? this.props.mainStore.articles.length
+                : 1
+            }
+            onChange={this.onChange}
           />
         </div>
-
-        <style jsx>{`
-          .page-divider {
-            margin: 2rem 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-
-            filter: grayscale(100%) !important;
-            filter: #282c32 !important;
-
-            user-select: none !important;
-          }
-
-          .zent-btn {
-            background-color: inherit !important;
-          }
-
-          .container.light .zent-btn-primary {
-            border: none !important;
-            font-weight: bold;
-          }
-
-          .container.dark .page-divider {
-            opacity: 0.6;
-          }
-        `}</style>
       </div>
     )
   }
 
   componentDidMount() {
-    if (
-      this.props.match &&
-      this.props.match.params &&
-      this.props.match.params.id
-    ) {
-      let page = this.props.match.params.id
+    const $route = parseUrl(window.location.href)
+    const page =
+      ($route.query && $route.query.page !== undefined && $route.query.page) ||
+      ($route.path &&
+        $route.path.includes("page/") &&
+        $route.path.replace("page/", "")) ||
+      1
 
-      if (page >= 1) {
-        this.getUrlPage(page * 1)
-      }
-    }
+    this.props.mainStore.getArticleList(page)
 
-    // this.setState({
-    //   isXsWindow: window.innerWidth <= 768 ? 1 : 0
-    // })
+    this.setState({
+      current: page * 1
+    })
   }
 }
 

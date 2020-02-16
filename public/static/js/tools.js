@@ -25,8 +25,51 @@ const md2html = function(md) {
   return html
 }
 
+const parseUrl = function(url = "") {
+  try {
+    let parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/,
+      result = parse_url.exec(url),
+      names = [
+        "url",
+        "scheme",
+        "slash",
+        "host",
+        "port",
+        "path",
+        "query",
+        "hash"
+      ],
+      obj = {}
+    names.forEach((item, index) => {
+      if (result[index] !== undefined) {
+        obj[item] = decodeURI(result[index])
+      }
+    })
+
+    if (obj["query"] && obj["query"].includes("=")) {
+      let query = {}
+      if (obj["query"].includes("&")) {
+        obj["query"].split("&").forEach(item => {
+          if (typeof item == "string" && item.includes("=")) {
+            let tmp = item.split("=")
+            query[tmp[0]] = tmp[1]
+          }
+        })
+      } else {
+        let tmp = obj["query"].split("=")
+        query[tmp[0]] = tmp[1]
+      }
+      obj["query"] = JSON.parse(JSON.stringify(query))
+    }
+    return obj
+  } catch (err) {
+    return null
+  }
+}
+
 module.exports = {
   getSearchParam,
   getRandomKey,
-  md2html
+  md2html,
+  parseUrl
 }

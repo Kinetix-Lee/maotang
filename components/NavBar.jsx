@@ -28,46 +28,7 @@ class NavBar extends React.Component {
             })}
           </ul>
         </div>
-        <style jsx="true">{`
-          nav.nav-bar {
-            width: 100%;
-            border-bottom: 1px;
-            padding: 4em;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            user-select: none;
-          }
-
-          .nav {
-            width: 100%;
-            margin: 0 auto;
-            max-width: 1200px;
-          }
-
-          .nav-title {
-            font-size: 2rem;
-            text-align: center;
-          }
-
-          ul.nav-list {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            line-height: 4rem;
-          }
-
-          ul.nav-list li {
-            margin: 0 0.5rem;
-          }
-        `}</style>
       </nav>
-      // <div>nmsl</div>
     )
   }
 }

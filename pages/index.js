@@ -8,6 +8,7 @@ import Bottom from "../components/Bottom"
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props)
   }
 
   render() {
@@ -15,7 +16,7 @@ class IndexPage extends React.Component {
       <div className="App">
         <Nav />
         <ArticleList />
-        <PageDivider />
+        <PageDivider router={this.props.router} />
         <Bottom />
       </div>
     )

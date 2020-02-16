@@ -1,7 +1,7 @@
 import React from "react"
-import ArticleItem from "./ArticleItem"
 import { observer, inject } from "mobx-react"
 import { getRandomKey } from "../../public/static/js/tools"
+import Link from "next/link"
 
 @inject("mainStore")
 @observer
@@ -17,18 +17,33 @@ class ArticleList extends React.Component {
           {this.props.mainStore.articleList &&
           this.props.mainStore.articleList.length > 0 ? (
             this.props.mainStore.articleList.map(item => (
-              <ArticleItem
-                id={item.id}
-                time={item.time}
-                title={item.title}
+              <div
                 key={getRandomKey()}
-              />
+                className="article-item wow fadeIn animated"
+              >
+                <Link href={{ pathname: "/article", query: { id: item.id } }}>
+                  <a>{item.title}</a>
+                </Link>
+                <div className="brief">{item.time}</div>
+              </div>
             ))
           ) : (
             <div style={{ textAlign: "center", padding: "10rem 0" }}>
               Less is more
             </div>
           )}
+
+          {/* {this.props.mainStore.articleList.map(item => (
+            <div
+              key={getRandomKey()}
+              className="article-item wow fadeIn animated"
+            >
+              <Link href={"/article/"}>
+                <a>{item.title}</a>
+              </Link>
+              <div className="brief">{item.time}</div>
+            </div>
+          ))} */}
         </div>
       </div>
     )

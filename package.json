@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev-server": "node ./server",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "server": "NODE_ENV=production node ./server"
   },
   "dependencies": {
     "antd": "^3.26.9",
     "highlight.js": "^9.18.1",
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8",
     "marked": "^0.8.0",
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
