@@ -47,6 +47,7 @@ class MyApp extends App {
       <Provider {...store}>
         <div className={"container " + this.state.theme}>
           <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+          <script src="https://img.meek3n.cn/cdn/pace.min.js"></script>
           <link
             href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css"
             rel="stylesheet"
