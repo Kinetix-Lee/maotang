@@ -19,14 +19,18 @@ class PageDivider extends React.Component {
 
   onChange = e => {
     if (e) {
-      let lastPage = this.state.current
+      let href = window.location.href
       this.setState({
         current: e
       })
 
       this.props.mainStore.getArticleList(e * 1)
 
-      history.pushState({}, "", e) /* 用 history 实现路由软刷新 */
+      history.pushState(
+        {},
+        "",
+        href.includes("page/") ? e : "/page/" + e
+      ) /* 用 history 实现路由软刷新 */
     }
   }
 
