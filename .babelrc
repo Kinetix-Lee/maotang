@@ -3,11 +3,12 @@
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    // "transform-decorators-legacy",
     [
       "import",
       {
         "libraryName": "antd",
-        "style": "css"
+        "style": false
       }
     ]
   ]
