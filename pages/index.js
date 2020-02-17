@@ -13,7 +13,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App main-page">
         <Nav />
         <ArticleList />
         <PageDivider router={this.props.router} />
