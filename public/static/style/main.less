@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  color: #fff;
+  background-color: #212121 !important;
+}
+
 .page-divider {
   margin: 2rem 0;
   display: flex;
@@ -15,6 +20,15 @@
   filter: #282c32 !important;
 
   user-select: none !important;
+}
+
+.error-page {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .zent-btn {
@@ -138,10 +152,6 @@ body {
 .dark .wrapper {
   background-color: #282c32;
   color: #a9a9b3;
-  ::selection {
-    color: #fff;
-    background-color: #212121;
-  }
   --font-color: #a9a9b3 !important;
   --weight-color: #2bbc8a;
   --divider-color: #22262b;
@@ -362,6 +372,12 @@ article {
 article {
   .article-box {
     opacity: 0;
+  }
+
+  ol {
+    li {
+      display: block;
+    }
   }
 
   a {
