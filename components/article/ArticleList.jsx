@@ -15,23 +15,23 @@ class ArticleList extends React.Component {
       <div className="wrapper">
         <div className="block article-list">
           {this.props.mainStore.articleList &&
-          this.props.mainStore.articleList.length > 0 ? (
-            this.props.mainStore.articleList.map(item => (
-              <div
-                key={getRandomKey()}
-                className="article-item wow fadeIn animated"
-              >
-                <Link href={{ pathname: "/article", query: { id: item.id } }}>
-                  <a>{item.title}</a>
-                </Link>
-                <div className="brief">{item.time}</div>
-              </div>
-            ))
-          ) : (
-            <div style={{ textAlign: "center", padding: "10rem 0" }}>
-              Less is more
+            this.props.mainStore.articleList.length > 0 ? (
+              this.props.mainStore.articleList.map(item => (
+                <div
+                  key={getRandomKey()}
+                  className="article-item wow fadeIn animated"
+                >
+                  <Link href={{ pathname: "/article", query: { id: item.id } }}>
+                    <a>{item.title}</a>
+                  </Link>
+                  <div className="brief">{item.time}</div>
+                </div>
+              ))
+            ) : (
+              <div style={{ textAlign: "center", padding: "10rem 0" }}>
+                Less is more
             </div>
-          )}
+            )}
 
           {/* {this.props.mainStore.articleList.map(item => (
             <div
