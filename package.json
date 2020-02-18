@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "server-win": "set NODE_ENV=production && node ./server",
-    "server": "NODE_ENV=production"
+    "server": "NODE_ENV=production node ./server"
   },
   "dependencies": {
     "antd": "^3.26.9",
