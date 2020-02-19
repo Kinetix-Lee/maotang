@@ -29,22 +29,8 @@ class ArticleList extends React.Component {
               </div>
             ))
           ) : (
-            <div style={{ textAlign: "center", padding: "10rem 0" }}>
-              Less is more
-            </div>
+            <div style={{ textAlign: "center", padding: "10rem 0" }}></div>
           )}
-
-          {/* {this.props.mainStore.articleList.map(item => (
-            <div
-              key={getRandomKey()}
-              className="article-item wow fadeIn animated"
-            >
-              <Link href={"/article/"}>
-                <a>{item.title}</a>
-              </Link>
-              <div className="brief">{item.time}</div>
-            </div>
-          ))} */}
         </div>
       </div>
     )
@@ -52,7 +38,7 @@ class ArticleList extends React.Component {
 
   componentDidMount() {
     this.props.mainStore.getStaticInfo()
-    this.props.mainStore.getArticleList()
+    // this.props.mainStore.getArticleList()
   }
 }
 

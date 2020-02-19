@@ -43,6 +43,7 @@ class Store extends BaseStore {
   @action getStaticInfo() {
     articles = require("../public/static/article/title.json") || []
     this.articles = articles
+    this.getArticleList()
   }
 }
 

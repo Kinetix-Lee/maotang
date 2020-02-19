@@ -18,7 +18,7 @@ class Article extends React.Component {
       <div className="App">
         <NavBar />
         <ArticleContent id={this.state.id} />
-        <Bottom />
+        <Bottom show={true} />
       </div>
     )
   }

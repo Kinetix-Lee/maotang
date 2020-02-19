@@ -22,7 +22,7 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.store.mainStore.getStaticInfo()
+    // this.props.store.mainStore.getStaticInfo()
   }
 }
 
