@@ -12,7 +12,7 @@ class Article extends React.Component {
     return (
       <div className="App">
         <NavBar />
-        <ArticleContent />
+        <ArticleContent id="test" />
         <Bottom />
       </div>
     )

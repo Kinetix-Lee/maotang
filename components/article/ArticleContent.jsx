@@ -4,8 +4,6 @@ import marked from "marked"
 // import hljs from "highlight.js"
 import { isNight } from "../../public/static/js/tools"
 
-const article = require("../../public/static/article/content/test.md")
-
 const renderer = new marked.Renderer()
 
 marked.setOptions({
@@ -44,7 +42,9 @@ class ArticleContent extends React.Component {
             <div
               ref="article"
               dangerouslySetInnerHTML={{
-                __html: article
+                __html: this.props.id
+                  ? require(`../../public/static/article/content/${this.props.id}.md`)
+                  : "<div></div>"
               }}
             ></div>
           </article>
