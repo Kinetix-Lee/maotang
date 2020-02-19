@@ -2,7 +2,7 @@ import React from "react"
 import { Pagination } from "antd"
 import { observer, inject } from "mobx-react"
 import { parseUrl } from "../../public/static/js/tools"
-import Router from "next/router"
+// import Router from "next/router"
 
 @inject("mainStore")
 @observer
@@ -43,7 +43,16 @@ class PageDivider extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div
+        className="wrapper"
+        style={{
+          display:
+            this.props.mainStore.articles &&
+            this.props.mainStore.articles.length
+              ? "flex"
+              : "none"
+        }}
+      >
         <div
           className={
             "block page-divider " +
