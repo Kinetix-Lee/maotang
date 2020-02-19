@@ -1,0 +1,26 @@
+{
+  "site": {
+    "title": "猫汤",
+    "description": "喵喵喵。",
+    "keywords": "抑郁症,性冷淡,直男,以上都不是"
+  },
+
+  "menu": [
+    {
+      "href": "/",
+      "context": "首页"
+    },
+    {
+      "href": "/archives",
+      "context": "归档"
+    },
+    {
+      "href": "/search",
+      "context": "搜索"
+    },
+    {
+      "href": "/about",
+      "context": "关于"
+    }
+  ]
+}

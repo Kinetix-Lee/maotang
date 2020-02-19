@@ -9,9 +9,6 @@ const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
 
 const renderer = new marked.Renderer()
 
-// function showMeArticle(id) {
-//   return require(`../../public/static/article/content/${id || 1}.md`)
-// }
 
 marked.setOptions({
   renderer: renderer,
@@ -43,12 +40,14 @@ class ArticleContent extends React.Component {
       __html =
         '<div style="width: 100%;text-align: center;margin: 4rem 0 8rem 0;">但故事的最后你好像还是说了拜～</div>'
     }
+
     return (
       <div className="wrapper">
         <link href={cssUrl} rel="stylesheet" />
         <div className="block article-box wow fadeIn animated">
           <article>
             <div
+              className="article"
               ref="article"
               dangerouslySetInnerHTML={{
                 __html
@@ -61,7 +60,6 @@ class ArticleContent extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.id)
     if (this.props.id >= 0) {
       const blocks = document.querySelectorAll("pre code") || []
       for (let i = 0; i < blocks.length; i++) {

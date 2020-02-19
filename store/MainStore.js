@@ -4,24 +4,7 @@ import { BaseStore, getOrCreateStore } from "next-mobx-wrapper"
 let articles = []
 
 class Store extends BaseStore {
-  @observable menu = [
-    {
-      href: "/",
-      context: "首页"
-    },
-    {
-      href: "/archives",
-      context: "归档"
-    },
-    {
-      href: "/search",
-      context: "搜索"
-    },
-    {
-      href: "/about",
-      context: "关于"
-    }
-  ]
+  @observable menu = require("../public/static/config/mao.tang.json").menu
 
   @observable articlePage = 1
 
@@ -31,9 +14,8 @@ class Store extends BaseStore {
 
   @observable articles = []
 
-  @action getArticleList(page = 1) {
+  @action getArticleList(page = 1, is_private = false) {
     if (!this.articles.length) this.getStaticInfo()
-    this.articlePage = page /* 将页码更改也保存起来 */
     let article = (this.articles || []).slice(),
       result = []
     for (let i = 0; i < article.length; i += 10) {
@@ -44,7 +26,10 @@ class Store extends BaseStore {
     } else {
       this.articleList = []
     }
-    this.loadCount++
+    if (!is_private) {
+      this.articlePage = page /* 将页码更改也保存起来 */
+      this.loadCount++
+    }
     return this.articleList
   }
 
@@ -53,7 +38,24 @@ class Store extends BaseStore {
       articles = require("../public/static/article/title.json") || []
       this.articles = articles
     }
-    // return this.getArticleList()
+  }
+
+  @action getArticleDetail(id) {
+    this.getStaticInfo()
+    const articleList = this.articles.slice()
+    let detail =
+      articleList.find(item => item && item.id && item.id == id) || null
+    return detail
+      ? Object.assign(
+          {
+            id: 0,
+            title: "",
+            time: "",
+            brief: ""
+          },
+          detail
+        )
+      : detail
   }
 }
 

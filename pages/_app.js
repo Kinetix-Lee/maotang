@@ -5,7 +5,9 @@ import { Provider, useStaticRendering } from "mobx-react"
 import { withMobx } from "next-mobx-wrapper"
 import { configure } from "mobx"
 import { isNight } from "../public/static/js/tools"
+import Head from "next/head"
 import "../public/static/style/main.less"
+import { site as SITE } from "../public/static/config/mao.tang.json"
 
 const isServer = !process.browser
 
@@ -42,6 +44,15 @@ class MyApp extends App {
     return (
       <Provider {...store}>
         <div className={"container " + this.state.theme}>
+          <Head>
+            <title>{SITE.title}</title>
+            <meta
+              name="description"
+              itemprop="description"
+              content={SITE.description}
+            />
+            <meta name="keywords" content={SITE.keywords} />
+          </Head>
           <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
           <script src="https://img.meek3n.cn/cdn/pace.min.js"></script>
           <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
