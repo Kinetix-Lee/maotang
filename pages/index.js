@@ -21,6 +21,10 @@ class IndexPage extends React.Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    this.props.store.mainStore.getStaticInfo()
+  }
 }
 
 export default IndexPage

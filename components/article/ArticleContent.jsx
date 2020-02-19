@@ -1,9 +1,6 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
-import hljs from "highlight.js"
-import "highlight.js/styles/github.css"
-import { md2html } from "../../public/static/js/tools"
 
 const renderer = new marked.Renderer()
 
@@ -32,13 +29,17 @@ class ArticleContent extends React.Component {
   render() {
     return (
       <div className="wrapper">
+        <link
+          href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css"
+          rel="stylesheet"
+        />
+        <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
         <div className="block article-box wow fadeIn animated">
           <article>
             <div
+              ref="article"
               dangerouslySetInnerHTML={{
-                __html: marked(md2html(), {
-                  renderer: renderer
-                })
+                __html: require("../../public/static/article/content/test.md")
               }}
             ></div>
           </article>
@@ -47,7 +48,14 @@ class ArticleContent extends React.Component {
     )
   }
 
-  componentDidMount() {}
-}
+  componentDidMount() {
+    if (hljs !== undefined) {
+      hljs.configure({ useBR: true })
 
+      document.querySelectorAll("code").forEach(block => {
+        hljs.highlightBlock(block)
+      })
+    }
+  }
+}
 export default ArticleContent

@@ -3,12 +3,6 @@ import { BaseStore, getOrCreateStore } from "next-mobx-wrapper"
 
 let articles = []
 
-const getStaticInfo = () => {
-  articles = require("../public/static/article/index.json") || []
-}
-
-getStaticInfo()
-
 class Store extends BaseStore {
   @observable menu = [
     {
@@ -44,6 +38,11 @@ class Store extends BaseStore {
     } else {
       this.articleList = []
     }
+  }
+
+  @action getStaticInfo() {
+    articles = require("../public/static/article/title.json") || []
+    this.articles = articles
   }
 }
 
