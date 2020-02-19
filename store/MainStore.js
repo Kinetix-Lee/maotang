@@ -23,11 +23,17 @@ class Store extends BaseStore {
     }
   ]
 
+  @observable articlePage = 1
+
+  @observable loadCount = 0
+
   @observable articleList = []
 
-  @observable articles = articles
+  @observable articles = []
 
   @action getArticleList(page = 1) {
+    if (!this.articles.length) this.getStaticInfo()
+    this.articlePage = page /* 将页码更改也保存起来 */
     let article = (this.articles || []).slice(),
       result = []
     for (let i = 0; i < article.length; i += 10) {
@@ -38,11 +44,16 @@ class Store extends BaseStore {
     } else {
       this.articleList = []
     }
+    this.loadCount++
+    return this.articleList
   }
 
   @action getStaticInfo() {
-    articles = require("../public/static/article/title.json") || []
-    this.articles = articles
+    if (!this.articleList.length) {
+      articles = require("../public/static/article/title.json") || []
+      this.articles = articles
+    }
+    // return this.getArticleList()
   }
 }
 

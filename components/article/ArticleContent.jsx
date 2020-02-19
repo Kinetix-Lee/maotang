@@ -6,6 +6,10 @@ import { isNight } from "../../public/static/js/tools"
 
 const renderer = new marked.Renderer()
 
+function showMeArticle(id) {
+  return require(`../../public/static/article/content/${id || 1}.md`)
+}
+
 marked.setOptions({
   renderer: renderer,
   highlight: function(code) {
@@ -42,9 +46,7 @@ class ArticleContent extends React.Component {
             <div
               ref="article"
               dangerouslySetInnerHTML={{
-                __html: this.props.id
-                  ? require(`../../public/static/article/content/${this.props.id}.md`)
-                  : "<div></div>"
+                __html: showMeArticle(this.props.id)
               }}
             ></div>
           </article>
@@ -54,9 +56,22 @@ class ArticleContent extends React.Component {
   }
 
   componentDidMount() {
-    const blocks = document.querySelectorAll("pre code") || []
-    for (let i = 0; i < blocks.length; i++) {
-      hljs.highlightBlock(blocks[i])
+    console.log(this.props.id)
+    if (this.props.id >= 0) {
+      const blocks = document.querySelectorAll("pre code") || []
+      for (let i = 0; i < blocks.length; i++) {
+        hljs.highlightBlock(blocks[i])
+      }
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.props.id >= 0) {
+      alert(this.props.id)
+      const blocks = document.querySelectorAll("pre code") || []
+      for (let i = 0; i < blocks.length; i++) {
+        hljs.highlightBlock(blocks[i])
+      }
     }
   }
 }
