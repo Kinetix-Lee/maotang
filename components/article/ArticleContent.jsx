@@ -3,12 +3,15 @@ import { observer, inject } from "mobx-react"
 import marked from "marked"
 // import hljs from "highlight.js"
 import { isNight } from "../../public/static/js/tools"
+const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
+  isNight() ? "dark" : "light"
+}.min.css`
 
 const renderer = new marked.Renderer()
 
-function showMeArticle(id) {
-  return require(`../../public/static/article/content/${id || 1}.md`)
-}
+// function showMeArticle(id) {
+//   return require(`../../public/static/article/content/${id || 1}.md`)
+// }
 
 marked.setOptions({
   renderer: renderer,
@@ -33,20 +36,22 @@ class ArticleContent extends React.Component {
   }
 
   render() {
+    let __html
+    try {
+      __html = require(`../../public/static/article/content/${this.props.id}.md`)
+    } catch {
+      __html =
+        '<div style="width: 100%;text-align: center;margin: 4rem 0 8rem 0;">但故事的最后你好像还是说了拜～</div>'
+    }
     return (
       <div className="wrapper">
-        <link
-          href={`https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
-            isNight() ? "dark" : "light"
-          }.min.css`}
-          rel="stylesheet"
-        />
+        <link href={cssUrl} rel="stylesheet" />
         <div className="block article-box wow fadeIn animated">
           <article>
             <div
               ref="article"
               dangerouslySetInnerHTML={{
-                __html: showMeArticle(this.props.id)
+                __html
               }}
             ></div>
           </article>

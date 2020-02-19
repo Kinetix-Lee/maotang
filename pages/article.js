@@ -5,10 +5,6 @@ import Bottom from "../components/Bottom"
 import { parseUrl } from "../public/static/js/tools"
 
 class Article extends React.Component {
-  state = {
-    id: 0
-  }
-
   constructor(props) {
     super(props)
   }
@@ -25,24 +21,24 @@ class Article extends React.Component {
     return (
       <div className="App">
         <NavBar />
-        <ArticleContent id={this.state.id || urlId} />
-        <Bottom show={!!this.state.id} />
+        <ArticleContent id={urlId} />
+        <Bottom show={!!urlId} />
       </div>
     )
   }
 
-  componentDidMount() {
-    const $route = parseUrl(window.location.href)
-    const id =
-      ($route.query && $route.query.id !== undefined && $route.query.id) ||
-      ($route.path &&
-        $route.path.includes("av/") &&
-        $route.path.replace("av/", "")) ||
-      0
-    this.setState({
-      id
-    })
-  }
+  // componentDidMount() {
+  //   const $route = parseUrl(window.location.href)
+  //   const id =
+  //     ($route.query && $route.query.id !== undefined && $route.query.id) ||
+  //     ($route.path &&
+  //       $route.path.includes("av/") &&
+  //       $route.path.replace("av/", "")) ||
+  //     0
+  //   this.setState({
+  //     id
+  //   })
+  // }
 }
 
 export default Article
