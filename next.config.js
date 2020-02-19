@@ -3,10 +3,11 @@ const withLess = require("@zeit/next-less")
 
 const marked = require("marked")
 
-const renderer = new marked.Renderer()
-
 marked.setOptions({
-  renderer: renderer,
+  renderer: new marked.Renderer(),
+  // highlight(code) {
+  //   return require("highlight.js").highlightAuto(code).value
+  // },
   pedantic: false,
   gfm: true,
   tables: true,
@@ -16,6 +17,8 @@ marked.setOptions({
   smartypants: false,
   xhtml: false
 })
+
+const renderer = new marked.Renderer()
 
 if (typeof require !== "undefined") {
   require.extensions[".less"] = file => {}
@@ -39,7 +42,7 @@ module.exports = withCss(
             {
               loader: "markdown-loader",
               options: {
-                pedantic: true,
+                // pedantic: true,
                 renderer
               }
             }

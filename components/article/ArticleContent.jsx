@@ -1,6 +1,10 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
+// import hljs from "highlight.js"
+import { isNight } from "../../public/static/js/tools"
+
+const article = require("../../public/static/article/content/test.md")
 
 const renderer = new marked.Renderer()
 
@@ -30,16 +34,17 @@ class ArticleContent extends React.Component {
     return (
       <div className="wrapper">
         <link
-          href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css"
+          href={`https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
+            isNight() ? "dark" : "light"
+          }.min.css`}
           rel="stylesheet"
         />
-        <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
         <div className="block article-box wow fadeIn animated">
           <article>
             <div
               ref="article"
               dangerouslySetInnerHTML={{
-                __html: require("../../public/static/article/content/test.md")
+                __html: article
               }}
             ></div>
           </article>
@@ -49,12 +54,9 @@ class ArticleContent extends React.Component {
   }
 
   componentDidMount() {
-    if (hljs !== undefined) {
-      hljs.configure({ useBR: true })
-
-      document.querySelectorAll("code").forEach(block => {
-        hljs.highlightBlock(block)
-      })
+    const blocks = document.querySelectorAll("pre code") || []
+    for (let i = 0; i < blocks.length; i++) {
+      hljs.highlightBlock(blocks[i])
     }
   }
 }

@@ -1,67 +1,114 @@
-Web 存储全攻略。
+为回馈社区和热爱的兽人文化，我开发了一个能收集毛茸茸小动物图片的 npm 包。
 
-## 1. Cookie
+<!--more-->
 
-更详细的说明：[https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies)
+![eevee][1]
 
-不是「小甜饼」，而是：某些网站为了辨别用户身份，**进行 Session 跟踪而储存在用户本地终端上的数据**（通常经过加密），由用户客户端计算机暂时或永久保存的信息。
+---
+Furazy - 轻巧的小动物图片收集库
+---
 
-**特点：**以 key = value 的形式存储，如
+A module for searching FURRY pictures.
+[Find it on NPM](https://www.npmjs.com/package/furazy)  /  [Add issues on Github](https://github.com/Meeken1998/furazy-spider/issues)
 
+### Usage
+
+### For Node.js
+
+##### Install
+
+```bash
+$ npm install furazy --save
 ```
-document.cookie = "user=meeken; expires=Thu, 18 Dec 2019 12:00:00 GMT";
-// 过期时间为 UTC 或 GMT 时间
+
+##### Import
+
+```js
+// es5
+const Furazy = require("furazy")
+// es6及以上
+import Furazy from "furazy"
 ```
 
-**大小限制：** ≤ 4kb
+##### APIs
 
-**个数限制：** ≤ 20（IE6），≤ 50（Firefox，IE7+），不设限（Chrome，Safari）
+|     | Method              | Explain                  | Async | Supported sites                     | Version |
+| --- | ------------------- | ------------------------ | ----- | ----------------------------------- | ------- |
+| 1   | Furry.searchImage() | Search FURRY images.     | Y     | e621.net, e926.net, furaffinity.com | v0.0.1  |
+| 2   | Furry.searchComic() | Search FURRY dojins.     | Y     | myreadingmanga.info                 | v0.1.0  |
+| 3   | Furry.getComic()    | Get a dojin through url. | Y     | myreadingmanga.info                 | v0.1.0  |
 
-**使用场景：**
+##### Usage
 
-1. 保存用户登录状态
-2. 跟踪用户行为
-3. 个性化定制
-4. 创建购物车 …等等
+```js
+const Furry = new Furazy()
 
-**优点：**
+/*
+  Furazy 的所有请求均为异步操作，可用 .then() 或 await 获取结果
+  All requests in Furazy are asynchronous, u can use .then() or await to get results.
+*/
+const searchIt = async () => {
+  // Search furry pictures
+  let searchResult = await Furry.searchImage(
+    "eevee", //[String]name (search keywords)
+    0,       //[Int]type, 0: e621.net，1: fa, 2: e926.net
+    1,       //[Int]page
+    1        //[Int]limit
+  )
+  console.log(searchResult)
 
-1. 无兼容问题（所有浏览器都支持）
-2. 可作为同域、跨页面全局变量（同一个网站中所有页面共享一套 cookie）
+  // Search doujins
+  let mrm = await Furry.searchComic(
+    "pokemon", //[String]name (search keywords)
+    0,         //[Int]sort
+    1,         //[Int]page
+  console.log(mrm)
 
-**缺点：**
+  // View doujins (only for myreadingmanga.info now)
+  let comic = await Furry.getComic(
+    "your_comic_url" //[String]commicUrl
+  )
+  console.log(comic)
+}
 
-1. 大小有限制
-2. 容易被清除，不能永久储存
-3. 在请求中被直接携带，攻击者无需了解其含义
+searchIt()
+```
 
-## 2. SessionStorage
+##### Result sample
 
-SessionStorage 作为 WebStorage 特性的 API 之一，用于临时保存同一窗口（或标签页）的数据，在关闭窗口或标签页之后将会删除这些数据，但刷新页面或使用“前进”、“后退按钮”后 sessionStorage 仍然存在。
+```js
+[
+  {
+    title:
+      "2019 ambiguous_gender bodily_fluids digital_drawing_(artwork) digital_media_(artwork) dragon dragonite drooling duo eevee feral hiore hi_res imminent_vore larger_pred licking licking_lips macro mammal nintendo oral_vore pokémon pokémon_(species) saliva simple_background size_difference slightly_chubby soft_vore tongue tongue_out video_games vore white_background",
+    preview:
+      "https://static1.e621.net/data/preview/65/e2/65e289e2e05ed9a004d9e18fefda2962.jpg",
+    image:
+      "https://static1.e621.net/data/65/e2/65e289e2e05ed9a004d9e18fefda2962.png",
+    author: "hiore",
+    author_url:
+      "https://www.pixiv.net/en/artworks/77983470, https://i.pximg.net/img-original/img/2019/11/25/03/37/25/77983470_p2.png, https://www.pixiv.net/member.php?id=45363288, https://twitter.com/D0Sd0ou3fm1R1rB/status/1196483299465519105"
+  }
+]
+```
 
-**特点：**
+### For Python3
 
-1. WebStorage 特性的 API 之一
-2. **关闭会话窗口后即清除**
-3. 内置 CRUD 方法
+Under development (ｏ ´∀ ｀ｏ)
 
-   sessionStorage.setItem('user', 'meeken') //增 / 改
-   sessionStorage.getItem('user') // 查
-   sessionStorage.removeItem('user') // 删，clear() 为全删
+### Find me
 
-## 3. LocalStorage
+- Github [@Meeken1998](https://github.com/Meeken1998)
+- 博客 [@meek3n.cn](https://meek3n.cn)
 
-LocalStorage 同为 WebStorage 特性的 API 之一。**localStorage 为浏览器持久存储提供了可能**，解决了 cookie 大小、时效有限等问题。
+### License
 
-**特点：**
+MIT
 
-1. 持久化存储数据，若非主动删除，会一直存在
-2. 和 sessionStorage 一样，提供了 CRUD 方法
 
-   localStorage.setItem('user', 'meeken') //增 / 改
-   localStorage.getItem('user') // 查
-   localStorage.removeItem('user') // 删
+----------
 
-## 4. userData
+-EOF-
 
-IE 支持的数据存储方法，但是很少用到。
+
+  [1]: https://img.meek3n.cn/articles/eevee.jpg

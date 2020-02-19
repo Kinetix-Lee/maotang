@@ -4,17 +4,13 @@ import * as getStores from "../store"
 import { Provider, useStaticRendering } from "mobx-react"
 import { withMobx } from "next-mobx-wrapper"
 import { configure } from "mobx"
+import { isNight } from "../public/static/js/tools"
 import "../public/static/style/main.less"
 
 const isServer = !process.browser
 
 configure({ enforceActions: "observed" })
 useStaticRendering(isServer) // NOT `true` value
-
-function isNight() {
-  return new Date().getHours() >= 18 || new Date().getHours() <= 6
-  //return false
-}
 
 class MyApp extends App {
   state = {
@@ -48,6 +44,7 @@ class MyApp extends App {
         <div className={"container " + this.state.theme}>
           <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
           <script src="https://img.meek3n.cn/cdn/pace.min.js"></script>
+          <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
           <link
             href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css"
             rel="stylesheet"

@@ -1,3 +1,8 @@
+const isNight = function() {
+  return new Date().getHours() >= 18 || new Date().getHours() <= 6
+  //return false
+}
+
 const getSearchParam = function(url, key) {
   if (typeof url == "string" && url.includes("?")) {
     url = url.split("")
@@ -67,6 +72,7 @@ const parseUrl = function(url = "") {
 }
 
 module.exports = {
+  isNight,
   getSearchParam,
   getRandomKey,
   md2html,
