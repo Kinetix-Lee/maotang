@@ -4,8 +4,6 @@ import marked from "marked"
 // import hljs from "highlight.js"
 import { isNight } from "../../public/static/js/tools"
 
-const article = require("../../public/static/article/content/test.md")
-
 const renderer = new marked.Renderer()
 
 marked.setOptions({
@@ -30,8 +28,19 @@ class ArticleContent extends React.Component {
     super(props)
   }
 
+  getThisArticle() {
+    let content
+    try {
+      content = require(`../../public/static/article/content/${this.props.id}.md`)
+    } catch (err) {
+      content = `<div style="width: 100%;text-align: center;margin: 4rem 0 8rem 0;">文章不见啦</div>`
+    } finally {
+      return content
+    }
+  }
+
   render() {
-    return (
+    return this.props.id ? (
       <div className="wrapper">
         <link
           href={`https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
@@ -44,19 +53,32 @@ class ArticleContent extends React.Component {
             <div
               ref="article"
               dangerouslySetInnerHTML={{
-                __html: article
+                __html: this.getThisArticle()
               }}
             ></div>
           </article>
         </div>
       </div>
+    ) : (
+      <div></div>
     )
   }
 
   componentDidMount() {
-    const blocks = document.querySelectorAll("pre code") || []
-    for (let i = 0; i < blocks.length; i++) {
-      hljs.highlightBlock(blocks[i])
+    if (this.props.id) {
+      const blocks = document.querySelectorAll("pre code") || []
+      for (let i = 0; i < blocks.length; i++) {
+        hljs.highlightBlock(blocks[i])
+      }
+    }
+  }
+
+  componentWillReceiveProps() {
+    if (this.props.id) {
+      const blocks = document.querySelectorAll("pre code") || []
+      for (let i = 0; i < blocks.length; i++) {
+        hljs.highlightBlock(blocks[i])
+      }
     }
   }
 }

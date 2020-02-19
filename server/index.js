@@ -23,7 +23,7 @@ const startServer = async () => {
         ctx.respond = false
       })
 
-    router.get("/article/:id", async ctx => {
+    router.get("/av/:id", async ctx => {
       await app.render(ctx.req, ctx.res, "/article", ctx.query)
       ctx.respond = false
     })

@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev-server": "node ./server",
+    "dev-server": "set PORT=9000 && node ./server",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server-win": "set NODE_ENV=production && node ./server",
-    "server": "NODE_ENV=production node ./server"
+    "server-win": "set NODE_ENV=production && set PORT=9000 && node ./server",
+    "server": "export PORT=9000 && export NODE_ENV=production && node ./server"
   },
   "dependencies": {
     "antd": "^3.26.9",

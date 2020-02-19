@@ -21,7 +21,8 @@ class ArticleList extends React.Component {
                 key={getRandomKey()}
                 className="article-item wow fadeIn animated"
               >
-                <Link href={{ pathname: "/article", query: { id: item.id } }}>
+                <Link href={{ pathname: "/av/" + item.id }}>
+                  {/* query: { id: item.id } */}
                   <a>{item.title}</a>
                 </Link>
                 <div className="brief">{item.time}</div>
