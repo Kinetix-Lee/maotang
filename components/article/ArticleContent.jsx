@@ -1,7 +1,6 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
-// import hljs from "highlight.js"
 import { isNight } from "../../public/static/js/tools"
 const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
   isNight() ? "dark" : "light"
