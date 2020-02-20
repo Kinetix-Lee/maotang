@@ -53,20 +53,22 @@ class Store extends BaseStore {
       count = {}
     for (let i = 0; i < articleList.length; i++) {
       if (articleList[i]["time"]) {
-        const yearAndMonth = new Date(articleList[i]["time"])
+        const yearAndMonth = new Date(articleList[i]["time"].replace(/-/g, "/"))
           .toLocaleDateString()
-          .split("-")
+          .replace(/-/g, "/")
+          .split("/")
           .slice(0, 2)
-          .join("-")
+          .join("/")
 
         if (!archives.includes(yearAndMonth)) {
-          archives.push(articleList[i]["time"])
+          archives.push(yearAndMonth)
           count[yearAndMonth] = 1
         } else {
           count[yearAndMonth]++
         }
       }
     }
+
     archives = archives.sort(
       (a, b) => new Date(b).valueOf() - new Date(a).valueOf()
     )

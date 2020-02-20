@@ -36,7 +36,12 @@ class ArticleList extends React.Component {
                   <a>{item.title}</a>
                 </Link>
                 <div className="brief">
-                  {item.time ? formatDate(item.time) : ""}
+                  {new Date(item.time.replace(/-/g, "/"))
+                    .toLocaleDateString()
+                    .replace(/-/g, "/")
+                    .split("/")
+                    .map(item => (item.length == 1 ? "0" + item : item))
+                    .join("/")}
                 </div>
               </div>
             ))}
@@ -56,7 +61,12 @@ class ArticleList extends React.Component {
                   <a>{item.title}</a>
                 </Link>
                 <div className="brief">
-                  {item.time ? formatDate(item.time) : ""}
+                  {new Date(item.time.replace(/-/g, "/"))
+                    .toLocaleDateString()
+                    .replace(/-/g, "/")
+                    .split("/")
+                    .map(item => (item.length == 1 ? "0" + item : item))
+                    .join("/")}
                 </div>
               </div>
             ))}
