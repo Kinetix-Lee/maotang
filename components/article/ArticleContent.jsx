@@ -49,6 +49,11 @@ class ArticleContent extends React.Component {
             : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
         }
       }
+
+      __html =
+        `<block class="title"><h1>${detail["title"]}</h1>${
+          detail["time"] ? `<p><small>${detail["time"]}</small></p>` : ""
+        }</block>` + __html
     } catch {
       __html =
         '<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">但故事的最后你好像还是说了拜～</div>'
