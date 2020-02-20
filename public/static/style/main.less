@@ -410,6 +410,10 @@ pre {
   animation-name: fadeInUp;
 }
 
+.error-page div {
+  background: inherit !important;
+}
+
 .article-list,
 .article {
   min-height: 20rem;
@@ -482,10 +486,14 @@ article {
     object-fit: cover;
   }
 
-  ol {
-    li {
-      display: block;
-    }
+  ol li {
+    display: block;
+  }
+
+  ul li {
+    display: list-item;
+    text-decoration: dotted;
+    margin-left: 1rem;
   }
 
   a {

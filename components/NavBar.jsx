@@ -14,7 +14,9 @@ class NavBar extends React.Component {
       <nav className="nav-bar">
         <div className="wrapper nav">
           <div className="nav-title">
-            <span>猫汤</span>
+            <Link href="/">
+              <a>猫汤</a>
+            </Link>
           </div>
           <ul className="nav-list">
             {this.props.mainStore.menu.map(item => {

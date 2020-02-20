@@ -48,10 +48,14 @@ class Store extends BaseStore {
     return detail
       ? Object.assign(
           {
-            id: 0,
+            id: "",
             title: "",
             time: "",
-            brief: ""
+            brief: "",
+            via: "",
+            update: "",
+            repo: "",
+            category: ""
           },
           detail
         )

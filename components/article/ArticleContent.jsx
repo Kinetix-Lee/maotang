@@ -39,7 +39,9 @@ class ArticleContent extends React.Component {
       const dic = {
         via: "原文地址：",
         time: "创建时间：",
-        update: "最后编辑："
+        update: "最后编辑：",
+        repo: "仓库地址：",
+        category: "分类："
       }
       for (let item in detail) {
         if (dic[item] && detail[item]) {
