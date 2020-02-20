@@ -2,26 +2,28 @@
 
 <!--more-->
 
-![eevee][1]
-
 ---
 
-## Furazy - 轻巧的小动物图片收集库
+## Furazy
 
-A module for searching FURRY pictures.
-[Try It](https://npm.runkit.com/furazy) / [Find it on NPM](https://www.npmjs.com/package/furazy) / [Add issues on Github](https://github.com/Meeken1998/furazy-spider/issues)
+一个毛茸茸图片爬虫。
 
-### Usage
+[![][1]](https://www.npmjs.com/package/furazy)
+[![][2]](https://github.com/Meeken1998/furazy-spider)
 
-### For Node.js
+<!-- [在 runkit 中调试](https://npm.runkit.com/furazy) / [查看 NPM](https://www.npmjs.com/package/furazy) / [查看 Github](https://github.com/Meeken1998/furazy-spider/issues) -->
 
-##### Install
+### 文档
+
+### 在 Node.js 中使用
+
+##### 安装
 
 ```bash
 $ npm install furazy --save
 ```
 
-##### Import
+##### 引入
 
 ```js
 // es5
@@ -30,16 +32,16 @@ const Furazy = require("furazy")
 import Furazy from "furazy"
 ```
 
-##### APIs
+##### API
 
-|     | Method               | Explain                  | Async | Supported sites                                                           | Version |
-| --- | -------------------- | ------------------------ | ----- | ------------------------------------------------------------------------- | ------- |
-| 1   | Furazy.canIUse()     | Network checking.        | Y     | e621.net, e926.net, furaffinity.com, furry.booru.org, myreadingmanga.info | v0.1.9  |
-| 2   | Furazy.searchImage() | Search FURRY images.     | Y     | e621.net, e926.net, furaffinity.com, furry.booru.org                      | v0.1.6  |
-| 3   | Furazy.searchComic() | Search FURRY dojins.     | Y     | myreadingmanga.info                                                       | v0.1.0  |
-| 4   | Furazy.getComic()    | Get a dojin through url. | Y     | myreadingmanga.info                                                       | v0.1.0  |
+|     | 方法                 | 说明                 | 异步 | 支持版本 sites                                                            | Version |
+| --- | -------------------- | -------------------- | ---- | ------------------------------------------------------------------------- | ------- |
+| 1   | Furazy.canIUse()     | 检查你的网络环境     | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org, myreadingmanga.info | v0.1.9  |
+| 2   | Furazy.searchImage() | 关键词查找图片       | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org                      | v0.1.6  |
+| 3   | Furazy.searchComic() | 关键词查找漫画       | Y    | myreadingmanga.info                                                       | v0.1.0  |
+| 4   | Furazy.getComic()    | 通过漫画地址下载漫画 | Y    | myreadingmanga.info                                                       | v0.1.0  |
 
-##### Usage
+##### 使用
 
 ```js
 const Furry = new Furazy()
@@ -75,7 +77,7 @@ const searchIt = async () => {
 searchIt()
 ```
 
-##### Result sample
+##### 结果示例（一张图片）
 
 ```json
 [
@@ -89,20 +91,21 @@ searchIt()
 ]
 ```
 
-### For Python3
+### 在 Python 中
 
-Under development (ｏ ´∀ ｀ｏ)
+正在开发，你也可以开发一个 python 版 (ｏ ´∀ ｀ｏ)
 
-### Find me
+### 找到我
 
 - Github [@Meeken1998](https://github.com/Meeken1998)
 - 博客 [@meek3n.cn](https://meek3n.cn)
 
-### License
+### 协议
 
 MIT
 
-[1]: https://img.meek3n.cn/articles/eevee.jpg
+[1]: https://img.shields.io/npm/v/furazy.svg
+[2]: https://img.shields.io/github/license/meeken1998/furazy-spider
 
 ---
 
