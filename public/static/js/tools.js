@@ -3,6 +3,13 @@ const isNight = function() {
   return true
 }
 
+const formatDate = function(date) {
+  let tmp = new Date(date)
+  tmp = tmp.toLocaleDateString().split("/")
+  tmp = tmp.map(item => (item.length === 1 ? "0" + item : item))
+  return tmp.join("/")
+}
+
 const getSearchParam = function(url, key) {
   if (typeof url == "string" && url.includes("?")) {
     url = url.split("")
@@ -76,5 +83,6 @@ module.exports = {
   getSearchParam,
   getRandomKey,
   md2html,
-  parseUrl
+  parseUrl,
+  formatDate
 }

@@ -1,6 +1,6 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
-import { getRandomKey } from "../../public/static/js/tools"
+import { getRandomKey, formatDate } from "../../public/static/js/tools"
 import Link from "next/link"
 
 let currentList = []
@@ -19,13 +19,6 @@ class ArticleList extends React.Component {
   }
 
   render() {
-    // if (!this.props.propsPage)
-    //   return (
-    //     <div className="wrapper">
-    //       <div className="block article-list"></div>
-    //     </div>
-    //   )
-
     if (
       currentList &&
       currentList.length > 0 &&
@@ -42,7 +35,9 @@ class ArticleList extends React.Component {
                 <Link href={{ pathname: "/article?id=" + item.id }}>
                   <a>{item.title}</a>
                 </Link>
-                <div className="brief">{item.time}</div>
+                <div className="brief">
+                  {item.time ? formatDate(item.time) : ""}
+                </div>
               </div>
             ))}
           </div>
@@ -60,7 +55,9 @@ class ArticleList extends React.Component {
                 <Link href={"/blog/" + item.id}>
                   <a>{item.title}</a>
                 </Link>
-                <div className="brief">{item.time}</div>
+                <div className="brief">
+                  {item.time ? formatDate(item.time) : ""}
+                </div>
               </div>
             ))}
           </div>

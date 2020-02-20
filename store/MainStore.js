@@ -14,6 +14,10 @@ class Store extends BaseStore {
 
   @observable articles = []
 
+  @observable archives = []
+
+  @observable archivesCount = {}
+
   @action getArticleList(page = 1, is_private = false) {
     if (!this.articles.length) this.getStaticInfo()
     let article = (this.articles || []).slice(),
@@ -40,6 +44,37 @@ class Store extends BaseStore {
     }
   }
 
+  @action getArchiveList() {
+    if (this.archives.length > 0 && this.archivesCount)
+      return { list: this.archives, count: this.archivesCount }
+    this.getStaticInfo()
+    const articleList = (this.articles || []).slice()
+    let archives = [],
+      count = {}
+    for (let i = 0; i < articleList.length; i++) {
+      if (articleList[i]["time"]) {
+        const yearAndMonth = new Date(articleList[i]["time"])
+          .toLocaleDateString()
+          .split("-")
+          .slice(0, 2)
+          .join("-")
+
+        if (!archives.includes(yearAndMonth)) {
+          archives.push(articleList[i]["time"])
+          count[yearAndMonth] = 1
+        } else {
+          count[yearAndMonth]++
+        }
+      }
+    }
+    archives = archives.sort(
+      (a, b) => new Date(b).valueOf() - new Date(a).valueOf()
+    )
+    this.archives = archives
+    this.archivesCount = count
+    return { list: archives, count }
+  }
+
   @action getArticleDetail(id) {
     this.getStaticInfo()
     const articleList = this.articles.slice()
@@ -48,10 +83,14 @@ class Store extends BaseStore {
     return detail
       ? Object.assign(
           {
-            id: 0,
+            id: "",
             title: "",
             time: "",
-            brief: ""
+            brief: "",
+            via: "",
+            update: "",
+            repo: "",
+            category: ""
           },
           detail
         )

@@ -1,7 +1,6 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
-// import hljs from "highlight.js"
 import { isNight } from "../../public/static/js/tools"
 const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
   isNight() ? "dark" : "light"
@@ -39,14 +38,15 @@ class ArticleContent extends React.Component {
       const dic = {
         via: "原文地址：",
         time: "创建时间：",
-        update: "最后编辑："
+        update: "最后编辑：",
+        repo: "仓库地址：",
+        category: "分类："
       }
       for (let item in detail) {
         if (dic[item] && detail[item]) {
-          __html +=
-            item === "via"
-              ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</p>`
-              : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
+          __html += ["via", "repo"].includes(item)
+            ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</p>`
+            : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
         }
       }
     } catch {
