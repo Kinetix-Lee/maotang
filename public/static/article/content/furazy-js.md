@@ -1,9 +1,5 @@
 为回馈社区和热爱的兽人文化，我开发了一个能收集毛茸茸小动物图片的 npm 包。
 
-<!--more-->
-
----
-
 ## Furazy
 
 一个毛茸茸图片爬虫。
@@ -13,7 +9,6 @@
 
 <!-- [在 runkit 中调试](https://npm.runkit.com/furazy) / [查看 NPM](https://www.npmjs.com/package/furazy) / [查看 Github](https://github.com/Meeken1998/furazy-spider/issues) -->
 
-### 文档
 
 ### 在 Node.js 中使用
 
