@@ -9,7 +9,6 @@
 
 <!-- [在 runkit 中调试](https://npm.runkit.com/furazy) / [查看 NPM](https://www.npmjs.com/package/furazy) / [查看 Github](https://github.com/Meeken1998/furazy-spider/issues) -->
 
-
 ### 在 Node.js 中使用
 
 ##### 安装
@@ -29,12 +28,12 @@ import Furazy from "furazy"
 
 ##### API
 
-|     | 方法                 | 说明                 | 异步 | 支持版本 sites                                                            | Version |
-| --- | -------------------- | -------------------- | ---- | ------------------------------------------------------------------------- | ------- |
-| 1   | Furazy.canIUse()     | 检查你的网络环境     | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org, myreadingmanga.info | v0.1.9  |
-| 2   | Furazy.searchImage() | 关键词查找图片       | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org                      | v0.1.6  |
-| 3   | Furazy.searchComic() | 关键词查找漫画       | Y    | myreadingmanga.info                                                       | v0.1.0  |
-| 4   | Furazy.getComic()    | 通过漫画地址下载漫画 | Y    | myreadingmanga.info                                                       | v0.1.0  |
+|     | 方法                 | 说明                 | 异步 | 支持站点                                                                  | 版本   |
+| --- | -------------------- | -------------------- | ---- | ------------------------------------------------------------------------- | ------ |
+| 1   | Furazy.canIUse()     | 检查你的网络环境     | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org, myreadingmanga.info | v0.1.9 |
+| 2   | Furazy.searchImage() | 关键词查找图片       | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org                      | v0.1.6 |
+| 3   | Furazy.searchComic() | 关键词查找漫画       | Y    | myreadingmanga.info                                                       | v0.1.0 |
+| 4   | Furazy.getComic()    | 通过漫画地址下载漫画 | Y    | myreadingmanga.info                                                       | v0.1.0 |
 
 ##### 使用
 
@@ -86,11 +85,7 @@ searchIt()
 ]
 ```
 
-### 在 Python 中
-
-正在开发，你也可以开发一个 python 版 (ｏ ´∀ ｀ｏ)
-
-### 找到我
+### 联系作者
 
 - Github [@Meeken1998](https://github.com/Meeken1998)
 - 博客 [@meek3n.cn](https://meek3n.cn)
