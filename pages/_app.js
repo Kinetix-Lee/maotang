@@ -8,6 +8,7 @@ import { isNight } from "../public/static/js/tools"
 import Head from "next/head"
 import "../public/static/style/main.less"
 import { site as SITE } from "../public/static/config/mao.tang.json"
+import { BackTop } from "antd"
 
 const isServer = !process.browser
 
@@ -62,6 +63,8 @@ class MyApp extends App {
           ></link>
           <Component {...this.props} />
         </div>
+
+        <BackTop />
       </Provider>
     )
   }

@@ -5,11 +5,11 @@
 ![eevee][1]
 
 ---
-Furazy - 轻巧的小动物图片收集库
----
+
+## Furazy - 轻巧的小动物图片收集库
 
 A module for searching FURRY pictures.
-[Find it on NPM](https://www.npmjs.com/package/furazy)  /  [Add issues on Github](https://github.com/Meeken1998/furazy-spider/issues)
+[Try It](https://npm.runkit.com/furazy) / [Find it on NPM](https://www.npmjs.com/package/furazy) / [Add issues on Github](https://github.com/Meeken1998/furazy-spider/issues)
 
 ### Usage
 
@@ -44,9 +44,9 @@ import Furazy from "furazy"
 const Furry = new Furazy()
 
 /*
-  Furazy 的所有请求均为异步操作，可用 .then() 或 await 获取结果
-  All requests in Furazy are asynchronous, u can use .then() or await to get results.
-*/
+ * Furazy 的所有请求均为异步操作，可用 .then() 或 await 获取结果
+ * All requests in Furazy are asynchronous, u can use .then() or await to get results.
+ */
 const searchIt = async () => {
   // Search furry pictures
   let searchResult = await Furry.searchImage(
@@ -77,7 +77,7 @@ searchIt()
 ##### Result sample
 
 ```js
-[
+;[
   {
     title:
       "2019 ambiguous_gender bodily_fluids digital_drawing_(artwork) digital_media_(artwork) dragon dragonite drooling duo eevee feral hiore hi_res imminent_vore larger_pred licking licking_lips macro mammal nintendo oral_vore pokémon pokémon_(species) saliva simple_background size_difference slightly_chubby soft_vore tongue tongue_out video_games vore white_background",
@@ -105,10 +105,8 @@ Under development (ｏ ´∀ ｀ｏ)
 
 MIT
 
+[1]: https://img.meek3n.cn/articles/eevee.jpg
 
-----------
+---
 
 -EOF-
-
-
-  [1]: https://img.meek3n.cn/articles/eevee.jpg

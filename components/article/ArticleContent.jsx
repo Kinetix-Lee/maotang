@@ -9,7 +9,6 @@ const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
 
 const renderer = new marked.Renderer()
 
-
 marked.setOptions({
   renderer: renderer,
   highlight: function(code) {
@@ -36,9 +35,23 @@ class ArticleContent extends React.Component {
     let __html
     try {
       __html = require(`../../public/static/article/content/${this.props.id}.md`)
+      const detail = this.props.mainStore.getArticleDetail(this.props.id)
+      const dic = {
+        via: "原文地址：",
+        time: "创建时间：",
+        update: "最后编辑："
+      }
+      for (let item in detail) {
+        if (dic[item] && detail[item]) {
+          __html +=
+            item === "via"
+              ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</p>`
+              : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
+        }
+      }
     } catch {
       __html =
-        '<div style="width: 100%;text-align: center;margin: 4rem 0 8rem 0;">但故事的最后你好像还是说了拜～</div>'
+        '<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">但故事的最后你好像还是说了拜～</div>'
     }
 
     return (
@@ -60,7 +73,7 @@ class ArticleContent extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.id >= 0) {
+    if (typeof this.props.id !== "undefined") {
       const blocks = document.querySelectorAll("pre code") || []
       for (let i = 0; i < blocks.length; i++) {
         hljs.highlightBlock(blocks[i])
@@ -69,8 +82,7 @@ class ArticleContent extends React.Component {
   }
 
   componentWillUpdate() {
-    if (this.props.id >= 0) {
-      alert(this.props.id)
+    if (typeof this.props.id !== "undefined") {
       const blocks = document.querySelectorAll("pre code") || []
       for (let i = 0; i < blocks.length; i++) {
         hljs.highlightBlock(blocks[i])

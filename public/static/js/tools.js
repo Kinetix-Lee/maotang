@@ -1,6 +1,6 @@
 const isNight = function() {
-  return new Date().getHours() >= 18 || new Date().getHours() <= 6
-  //return false
+  //return new Date().getHours() >= 18 || new Date().getHours() <= 6
+  return true
 }
 
 const getSearchParam = function(url, key) {
