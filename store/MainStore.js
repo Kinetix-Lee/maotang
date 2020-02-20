@@ -35,7 +35,7 @@ class Store extends BaseStore {
 
   @action getStaticInfo() {
     if (!this.articleList.length) {
-      articles = require("../public/static/article/title.json") || []
+      articles = require("../public/static/article/list.json") || []
       this.articles = articles
     }
   }

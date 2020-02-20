@@ -1,8 +1,9 @@
 import React from "react"
 import { Button } from "antd"
 import Router from "next/router"
+import Error from "next/error"
 
-export default class Error extends React.Component {
+export default class ErrorPage extends React.Component {
   static getInitialProps({ res, err }) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null
     return { statusCode }
@@ -15,14 +16,9 @@ export default class Error extends React.Component {
   render() {
     return (
       <div class="error-page">
-        <p>
-          {/* {JSON.stringify(this.props)} */}
-          {this.props.pageProps.statusCode
-            ? `An error ${this.props.pageProps.statusCode} occurred on server`
-            : "An error occurred on client"}
-        </p>
+        <Error statusCode={this.props.errcode || this.props.pageProps.statusCode || 666} />
 
-        <Button style={{ marginTop: "4px" }} onClick={this.handleBack2Home}>
+        <Button style={{ marginTop: "-10rem" }} onClick={this.handleBack2Home}>
           返回首页
         </Button>
       </div>

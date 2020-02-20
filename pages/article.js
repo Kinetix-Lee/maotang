@@ -5,6 +5,7 @@ import Bottom from "../components/Bottom"
 import { parseUrl } from "../public/static/js/tools"
 import Head from "next/head"
 import { site as SITE } from "../public/static/config/mao.tang.json"
+import ErrorPage from "./_error"
 
 class Article extends React.Component {
   constructor(props) {
@@ -16,11 +17,15 @@ class Article extends React.Component {
     const urlId =
       ($route.query && $route.query.id !== undefined && $route.query.id) ||
       ($route.path &&
-        $route.path.includes("av/") &&
-        $route.path.replace("av/", "")) ||
+        $route.path.includes("blog/") &&
+        $route.path.replace("blog/", "")) ||
       404
 
     const detail = this.props.store.mainStore.getArticleDetail(urlId)
+
+    if (!detail) {
+      return <ErrorPage errcode={404} />
+    }
 
     return (
       <div className="App">
