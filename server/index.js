@@ -23,10 +23,25 @@ const startServer = async () => {
         ctx.respond = false
       })
 
-    router.get("/blog/:id", async ctx => {
-      await app.render(ctx.req, ctx.res, "/article", ctx.query)
-      ctx.respond = false
-    })
+    router
+      .get("/blog/:id", async ctx => {
+        await app.render(ctx.req, ctx.res, "/article", ctx.query)
+        ctx.respond = false
+      })
+      .get("/article", async ctx => {
+        await app.render(ctx.req, ctx.res, "/article", ctx.query)
+        ctx.respond = false
+      })
+
+    router
+      .get("/archive", async ctx => {
+        await app.render(ctx.req, ctx.res, "/archive", ctx.query)
+        ctx.respond = false
+      })
+      .get("/archive/:id", async ctx => {
+        await app.render(ctx.req, ctx.res, "/category", ctx.query)
+        ctx.respond = false
+      })
 
     router.get("*", async ctx => {
       await handle(ctx.req, ctx.res)

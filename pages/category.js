@@ -3,31 +3,27 @@ import NavBar from "../components/NavBar"
 import Bottom from "../components/Bottom"
 import Head from "next/head"
 import { site as SITE } from "../public/static/config/mao.tang.json"
-import ArchiveContainer from "../components/archive/ArchiveContainer"
 
 import { observer, inject } from "mobx-react"
 
 @inject("mainStore")
 @observer
-class Archive extends React.Component {
+class Category extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    const list = this.props.mainStore.getArchiveList()
     return (
-      <div className="App main-page">
+      <div className="App">
         <Head>
-          <title>{`归档 - ${SITE.title}`}</title>
+          <title>{`2020/02 - ${SITE.title}`}</title>
         </Head>
         <NavBar />
-        <ArchiveContainer list={list} />
-        <div className="block page-divider"></div>
         <Bottom show={true} />
       </div>
     )
   }
 }
 
-export default Archive
+export default Category
