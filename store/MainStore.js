@@ -42,16 +42,8 @@ class Store extends BaseStore {
       articles = require("../public/static/article/list.json") || []
       function sortByDate(a, b) {
         return (
-          new Date(a["time"].replace(/-/g, "/"))
-            .toLocaleDateString()
-            .replace(/-/g, "/")
-            .split("/")
-            .join("") -
-          new Date(b["time"].replace(/-/g, "/"))
-            .toLocaleDateString()
-            .replace(/-/g, "/")
-            .split("/")
-            .join("")
+          new Date(b["time"].replace(/-/g, "/")).valueOf() -
+          new Date(a["time"].replace(/-/g, "/")).valueOf()
         )
       }
       articles = articles.sort(sortByDate)
@@ -85,7 +77,9 @@ class Store extends BaseStore {
     }
 
     archives = archives.sort(
-      (a, b) => a.replace(/(\/|-)/g, "") - b.replace(/(\/|-)/g, "")
+      (a, b) =>
+        new Date(b.replace(/-/g, "/")).valueOf() -
+        new Date(a.replace(/-/g, "/")).valueOf()
     )
     this.archives = archives
     this.archivesCount = count
