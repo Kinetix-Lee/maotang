@@ -6,6 +6,7 @@
 
 [![][1]](https://www.npmjs.com/package/furazy)
 [![][2]](https://github.com/Meeken1998/furazy-spider)
+[![][3]](https://npm.runkit.com/furazy)
 
 <!-- [在 runkit 中调试](https://npm.runkit.com/furazy) / [查看 NPM](https://www.npmjs.com/package/furazy) / [查看 Github](https://github.com/Meeken1998/furazy-spider/issues) -->
 
@@ -32,8 +33,8 @@ import Furazy from "furazy"
 | --- | -------------------- | -------------------- | ---- | ------------------------------------------------------------------------- | ------ |
 | 1   | Furazy.canIUse()     | 检查你的网络环境     | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org, myreadingmanga.info | v0.1.9 |
 | 2   | Furazy.searchImage() | 关键词查找图片       | 是   | e621.net, e926.net, furaffinity.com, furry.booru.org                      | v0.1.6 |
-| 3   | Furazy.searchComic() | 关键词查找漫画       | Y    | myreadingmanga.info                                                       | v0.1.0 |
-| 4   | Furazy.getComic()    | 通过漫画地址下载漫画 | Y    | myreadingmanga.info                                                       | v0.1.0 |
+| 3   | Furazy.searchComic() | 关键词查找漫画       | 是   | myreadingmanga.info                                                       | v0.1.0 |
+| 4   | Furazy.getComic()    | 通过漫画地址下载漫画 | 是   | myreadingmanga.info                                                       | v0.1.0 |
 
 ##### 使用
 
@@ -96,6 +97,7 @@ MIT
 
 [1]: https://img.shields.io/npm/v/furazy.svg
 [2]: https://img.shields.io/github/license/meeken1998/furazy-spider
+[3]: https://img.shields.io/badge/runkit-%E8%B0%83%E8%AF%95-blue
 
 ---
 

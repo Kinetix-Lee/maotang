@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev-server": "set PORT=9000 && node ./server",
+    "dev-server": "export PORT=9000 && node ./server",
+    "dev-server-win": "set PORT=9000 && node ./server",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
