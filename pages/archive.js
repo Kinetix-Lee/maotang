@@ -17,12 +17,13 @@ class Archive extends React.Component {
   render() {
     const list = this.props.mainStore.getArchiveList()
     return (
-      <div className="App">
+      <div className="App main-page">
         <Head>
           <title>{`归档 - ${SITE.title}`}</title>
         </Head>
         <NavBar />
         <ArchiveContainer list={list} />
+        <div className="block page-divider"></div>
         <Bottom show={true} />
       </div>
     )
