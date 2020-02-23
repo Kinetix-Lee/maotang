@@ -19,40 +19,68 @@ class ArticleList extends React.Component {
   }
 
   render() {
-    if (
-      currentList &&
-      currentList.length > 0 &&
-      this.props.mainStore.loadCount == 1
-    ) {
-      return (
-        <div className="wrapper">
-          <div className="block article-list">
-            {currentList.map(item => (
-              <div
-                key={getRandomKey()}
-                className="article-item wow fadeIn animated"
-              >
-                <Link href={{ pathname: "/article?id=" + item.id }}>
-                  <a>{item.title}</a>
-                </Link>
-                <div className="brief">
-                  {new Date(item.time.replace(/-/g, "/"))
-                    .toLocaleDateString()
-                    .replace(/-/g, "/")
-                    .split("/")
-                    .map(item => (item.length == 1 ? "0" + item : item))
-                    .join("/")}
+    if (!this.props.archive) {
+      if (
+        currentList &&
+        currentList.length > 0 &&
+        this.props.mainStore.loadCount == 1
+      ) {
+        return (
+          <div className="wrapper">
+            <div className="block article-list">
+              {currentList.map(item => (
+                <div
+                  key={getRandomKey()}
+                  className="article-item wow fadeIn animated"
+                >
+                  <Link href={{ pathname: "/article?id=" + item.id }}>
+                    <a>{item.title}</a>
+                  </Link>
+                  <div className="brief">
+                    {new Date(item.time.replace(/-/g, "/"))
+                      .toLocaleDateString()
+                      .replace(/-/g, "/")
+                      .split("/")
+                      .map(item => (item.length == 1 ? "0" + item : item))
+                      .join("/")}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      )
+        )
+      } else {
+        return (
+          <div className="wrapper">
+            <div className="block article-list">
+              {this.props.mainStore.articleList.map(item => (
+                <div
+                  key={getRandomKey()}
+                  className="article-item wow fadeIn animated"
+                >
+                  <Link href={"/blog/" + item.id}>
+                    <a>{item.title}</a>
+                  </Link>
+                  <div className="brief">
+                    {new Date(item.time.replace(/-/g, "/"))
+                      .toLocaleDateString()
+                      .replace(/-/g, "/")
+                      .split("/")
+                      .map(item => (item.length == 1 ? "0" + item : item))
+                      .join("/")}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
     } else {
+      const archiveList = this.props.archive
       return (
         <div className="wrapper">
           <div className="block article-list">
-            {this.props.mainStore.articleList.map(item => (
+            {archiveList.map(item => (
               <div
                 key={getRandomKey()}
                 className="article-item wow fadeIn animated"
@@ -109,6 +137,7 @@ class ArticleList extends React.Component {
   }
 
   componentWillMount() {
+    if (this.props.archive) return
     this.setState({
       currentPage: this.props.mainStore.articlePage
     })
@@ -116,6 +145,7 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.archive) return
     this.setState({
       isChange: false,
       currentPage: this.props.propsPage
@@ -123,6 +153,7 @@ class ArticleList extends React.Component {
   }
 
   componentWillUpdate() {
+    if (this.props.archive) return
     if (this.props.propsPage - this.state.currentPage !== 0) {
       this.setState({
         isChange: true,

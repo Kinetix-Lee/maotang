@@ -40,6 +40,15 @@ class Store extends BaseStore {
   @action getStaticInfo() {
     if (!this.articleList.length) {
       articles = require("../public/static/article/list.json") || []
+      articles = articles.map(item => {
+        item._archive = new Date(item["time"].replace(/-/g, "/"))
+          .toLocaleDateString()
+          .replace(/-/g, "/")
+          .split("/")
+          .slice(0, 2)
+          .join("/")
+        return item
+      })
       function sortByDate(a, b) {
         return (
           new Date(b["time"].replace(/-/g, "/")).valueOf() -
@@ -51,6 +60,13 @@ class Store extends BaseStore {
     }
   }
 
+  @action getArticlesByArchive(archive) {
+    if (!this.articles.length) this.getStaticInfo()
+    const articles = this.articles.slice()
+    archive = archive.replace("-", "/")
+    return articles.filter(item => item._archive == archive)
+  }
+
   @action getArchiveList() {
     if (this.archives.length > 0 && this.archivesCount)
       return { list: this.archives, count: this.archivesCount }
@@ -60,12 +76,13 @@ class Store extends BaseStore {
       count = {}
     for (let i = 0; i < articleList.length; i++) {
       if (articleList[i]["time"]) {
-        const yearAndMonth = new Date(articleList[i]["time"].replace(/-/g, "/"))
+        const yearAndMonth = articleList[i]["_archive"]
+        /*        new Date(articleList[i]["time"].replace(/-/g, "/"))
           .toLocaleDateString()
           .replace(/-/g, "/")
           .split("/")
           .slice(0, 2)
-          .join("/")
+          .join("/") */
 
         if (!archives.includes(yearAndMonth)) {
           archives.push(yearAndMonth)
