@@ -6,6 +6,9 @@ const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== "production"
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const bodyParser = require("koa-bodyparser")
+
+const Translate = require("google-translate-open-api")
 
 const startServer = async () => {
   try {
@@ -43,6 +46,20 @@ const startServer = async () => {
         ctx.respond = false
       })
 
+    router.use(bodyParser())
+
+    router.post("/fuck", async (ctx, next) => {
+      console.log(10086)
+      console.log(ctx.request.body)
+      let arr = ctx.request.body.arr
+      let res = await Translate.default(arr, {
+        tld: "cn",
+        to: "jp"
+      })
+
+      ctx.body = res.data
+    })
+
     router.get("*", async ctx => {
       await handle(ctx.req, ctx.res)
       ctx.respond = false
@@ -50,10 +67,17 @@ const startServer = async () => {
 
     server.use(async (ctx, next) => {
       ctx.res.statusCode = 200
+      ctx.set("Access-Control-Allow-Origin", "*")
+      ctx.set(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Content-Length, Authorization, Accept, X-Requested-With"
+      )
+      ctx.set("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
       await next()
     })
 
     server.use(router.routes())
+
     server.listen(port, () => {
       console.log(`> Ready on http://localhost:${port}`)
     })

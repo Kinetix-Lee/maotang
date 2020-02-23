@@ -13,11 +13,15 @@
   },
   "dependencies": {
     "antd": "^3.26.9",
+    "axios": "^0.19.2",
+    "cnpm": "^6.1.1",
     "fs": "^0.0.1-security",
     "google-translate-open-api": "^1.3.2",
     "highlight.js": "^9.18.1",
     "html-loader": "^0.5.5",
+    "install": "^0.13.0",
     "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^8.0.8",
     "markdown-loader": "^5.1.0",
     "marked": "^0.8.0",
@@ -29,7 +33,8 @@
     "null-loader": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "react-dom": "16.12.0",
+    "sudo": "^1.0.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",

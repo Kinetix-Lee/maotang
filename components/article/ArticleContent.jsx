@@ -6,6 +6,7 @@ const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
   isNight() ? "dark" : "light"
 }.min.css`
 import translate, { parseMultiple } from "google-translate-open-api"
+import axios from "axios"
 
 const renderer = new marked.Renderer()
 
@@ -62,12 +63,14 @@ class ArticleContent extends React.Component {
         '<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">但故事的最后你好像还是说了拜～</div>'
     }
 
-    translate("你好", {
-      tld: "cn",
-      to: "en"
-    }).then(res => {
-      console.log(res)
-    })
+    // console.log(__html)
+
+    // translate(__html, {
+    //   tld: "cn",
+    //   to: "en"
+    // }).then(res => {
+    //   console.log(res)
+    // })
 
     return (
       <div className="wrapper">
@@ -123,23 +126,19 @@ class ArticleContent extends React.Component {
       }
     }
 
-    console.log(translateArr)
+    // console.log(translateArr)
 
-    translate(translateArr, {
-      tld: "cn",
-      to: "en",
-      browers: true,
-      proxy: {
-        host: "127.0.0.1",
-        port: 9000
-      }
-    }).then(res => {
-      const data = res.data[0]
-      translateRes = parseMultiple(data)
-      for (let i = 0; i < translateArr.length; i++) {
-        translateTree[i].innerHTML = translateRes[i]
-      }
-    })
+    axios
+      .post("/fuck", {
+        arr: translateArr
+      })
+      .then(res => {
+        const data = res.data[0]
+        translateRes = parseMultiple(data)
+        for (let i = 0; i < translateArr.length; i++) {
+          translateTree[i].innerHTML = translateRes[i]
+        }
+      })
   }
 }
 export default ArticleContent
