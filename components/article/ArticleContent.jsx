@@ -5,6 +5,7 @@ import { isNight } from "../../public/static/js/tools"
 const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
   isNight() ? "dark" : "light"
 }.min.css`
+import translate, { parseMultiple } from "google-translate-open-api"
 
 const renderer = new marked.Renderer()
 
@@ -51,13 +52,23 @@ class ArticleContent extends React.Component {
       }
 
       __html =
-        `<block class="title"><h1>${detail["title"]}</h1>${
-          detail["time"] ? `<p><small>${detail["time"]}</small></p>` : ""
-        }</block>` + __html
+        `<h1 class="article-title">${detail["title"]}</h1>${
+          detail["time"] ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>` : ""
+        }` + __html
     } catch {
       __html =
         '<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">但故事的最后你好像还是说了拜～</div>'
     }
+
+    translate("你好", {
+      tld: "cn",
+      to: "en"
+    }).then(res => {
+      console.log(res)
+      // const data = res.data[0]
+      // const parseData = parseMultiple(data)
+      // console.log(parseData)
+    })
 
     return (
       <div className="wrapper">
@@ -67,10 +78,13 @@ class ArticleContent extends React.Component {
             <div
               className="article"
               ref="article"
+              id="article"
               dangerouslySetInnerHTML={{
                 __html
               }}
             ></div>
+
+            <button onClick={this.getHtml}>哈哈</button>
           </article>
         </div>
       </div>
@@ -93,6 +107,36 @@ class ArticleContent extends React.Component {
         hljs.highlightBlock(blocks[i])
       }
     }
+  }
+
+  getHtml() {
+    let dom = document.getElementById("article").childNodes
+    let translateTree = [],
+      translateArr = [],
+      translateRes = []
+    for (let i = 0; i < dom.length; i++) {
+      if (
+        dom[i].localName &&
+        ["p", "h1", "h2", "h3", "h4", "h5"].includes(dom[i].localName)
+      ) {
+        translateTree.push(dom[i])
+        translateArr.push(dom[i]["innerHTML"])
+      }
+    }
+
+    console.log(translateArr)
+
+    translate(translateArr, {
+      tld: "cn",
+      to: "en",
+      browers: true
+    }).then(res => {
+      const data = res.data[0]
+      translateRes = parseMultiple(data)
+      for (let i = 0; i < translateArr.length; i++) {
+        translateTree[i].innerHTML = translateRes[i]
+      }
+    })
   }
 }
 export default ArticleContent

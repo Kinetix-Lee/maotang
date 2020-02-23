@@ -67,6 +67,7 @@ class Store extends BaseStore {
     return articles.filter(item => item._archive == archive)
   }
 
+
   @action getArchiveList() {
     if (this.archives.length > 0 && this.archivesCount)
       return { list: this.archives, count: this.archivesCount }
