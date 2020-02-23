@@ -53,7 +53,9 @@ class ArticleContent extends React.Component {
 
       __html =
         `<h1 class="article-title">${detail["title"]}</h1>${
-          detail["time"] ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>` : ""
+          detail["time"]
+            ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>`
+            : ""
         }` + __html
     } catch {
       __html =
@@ -65,9 +67,6 @@ class ArticleContent extends React.Component {
       to: "en"
     }).then(res => {
       console.log(res)
-      // const data = res.data[0]
-      // const parseData = parseMultiple(data)
-      // console.log(parseData)
     })
 
     return (
@@ -129,7 +128,9 @@ class ArticleContent extends React.Component {
     translate(translateArr, {
       tld: "cn",
       to: "en",
-      browers: true
+      browers: true,
+      host: "maotang.meek3n.cn",
+      port: 443
     }).then(res => {
       const data = res.data[0]
       translateRes = parseMultiple(data)
