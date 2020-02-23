@@ -128,9 +128,11 @@ class ArticleContent extends React.Component {
     translate(translateArr, {
       tld: "cn",
       to: "en",
-      browers: true
-      // host: "127.0.0.1",
-      // port: 9000
+      browers: true,
+      proxy: {
+        host: "127.0.0.1",
+        port: 9000
+      }
     }).then(res => {
       const data = res.data[0]
       translateRes = parseMultiple(data)
