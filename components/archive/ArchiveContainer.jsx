@@ -17,8 +17,11 @@ class ArchiveContainer extends React.Component {
         <div className="block article-list archive">
           <ul>
             {list.map(item => (
-              <div className="article-item wow fadeIn animated">
-                <li key={getRandomKey()} className="archive-item">
+              <div
+                className="article-item wow fadeIn animated archive-child"
+                key={getRandomKey()}
+              >
+                <li className="archive-item">
                   <Link href={"/archive/" + item.replace("/", "-")}>
                     <a>
                       {item
