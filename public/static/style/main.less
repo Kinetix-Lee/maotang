@@ -251,6 +251,11 @@ body {
   --weight-color: #a9a9b3;
   --divider-color: #22262b;
   --code-bg: #191c20;
+
+  img {
+    border: 4px solid #fff;
+    opacity: 0.8;
+  }
 }
 
 li {
@@ -495,6 +500,9 @@ overflow-wrap: break-word; */
   }
 }
 
+.dark img {
+}
+
 article {
   font-family: "Merriweather", "Georgia", serif, roborto, -apple-system,
     BlinkMacSystemFont, helvetica neue, pingfang sc, hiragino sans gb, STHeiti,
@@ -538,7 +546,8 @@ article {
   }
 
   ol li {
-    display: block;
+    display: list-item;
+    margin-left: 1rem;
   }
 
   ul li {
