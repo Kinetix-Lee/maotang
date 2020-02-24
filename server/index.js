@@ -48,15 +48,13 @@ const startServer = async () => {
 
     router.use(bodyParser())
 
-    router.post("/fuck", async (ctx, next) => {
-      console.log(10086)
-      console.log(ctx.request.body)
-      let arr = ctx.request.body.arr
-      let res = await Translate.default(arr, {
+    router.post("/translate", async ctx => {
+      const arr = ctx.request.body.arr,
+        lang = ctx.request.body.lang || "en"
+      res = await Translate.default(arr, {
         tld: "cn",
-        to: "jp"
+        to: lang
       })
-
       ctx.body = res.data
     })
 
