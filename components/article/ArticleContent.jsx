@@ -5,7 +5,8 @@ import { isNight } from "../../public/static/js/tools"
 const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
   isNight() ? "dark" : "light"
 }.min.css`
-import translate, { parseMultiple } from "google-translate-open-api"
+import { parseMultiple } from "google-translate-open-api"
+import { Alert } from "antd"
 import axios from "axios"
 
 const renderer = new marked.Renderer()
@@ -36,7 +37,8 @@ class ArticleContent extends React.Component {
   state = {
     lang: "cn",
     __html: null,
-    lastTree: null
+    lastTree: null,
+    bowserLang: "zh-CN"
   }
 
   render() {
@@ -73,6 +75,36 @@ class ArticleContent extends React.Component {
       <div className="wrapper">
         <link href={cssUrl} rel="stylesheet" />
         <div className="block article-box wow fadeIn animated">
+          <Alert
+            closable
+            style={{ marginBottom: "1rem", opacity: isNight() ? "0.7" : "1" }}
+            message={
+              <div>
+                <div
+                  style={{
+                    display: this.state.lang == "cn" ? "block" : "none"
+                  }}
+                  className="flex-row"
+                >
+                  <span>Translated by Google into: </span>
+                  <a onClick={() => this.setLang("en")}>English</a>
+                  <a onClick={() => this.setLang("zh-tw")}>繁體中文</a>
+                  <a onClick={() => this.setLang("fr")}>French</a>
+                  <a onClick={() => this.setLang("ja")}>日本語</a>
+                </div>
+                <div
+                  style={{
+                    display: this.state.lang !== "cn" ? "block" : "none"
+                  }}
+                  className="flex-row"
+                >
+                  <span>Back to Language: </span>
+                  <a onClick={() => this.setLang("cn")}>简体中文</a>
+                </div>
+              </div>
+            }
+            type={isNight() ? "warning" : "success"}
+          />
           <article>
             <div
               className="article"
@@ -90,7 +122,6 @@ class ArticleContent extends React.Component {
               style={{ display: this.state.lang == "cn" ? "none" : "block" }}
             ></div>
           </article>
-          <button onClick={this.translateIt}>哈哈</button>
         </div>
       </div>
     )
@@ -107,6 +138,11 @@ class ArticleContent extends React.Component {
 
   componentDidMount() {
     this.highlightCode()
+    if (window && window.navigator && window.navigator.language) {
+      this.setState({
+        bowserLang: window.navigator.language
+      })
+    }
     that = this
   }
 
@@ -114,10 +150,14 @@ class ArticleContent extends React.Component {
     this.highlightCode()
   }
 
-  translateIt(e) {
-    e.persist()
+  setLang(lang) {
+    this.translateIt(lang)
+  }
 
-    let nextLang = that.state.lang !== "cn" ? "cn" : "en"
+  translateIt(e) {
+    if (e && e.persist) e.persist()
+
+    let nextLang = e ? e : that.state.lang !== "cn" ? "cn" : "en"
 
     if (nextLang == "cn") {
       that.setState({
@@ -130,6 +170,8 @@ class ArticleContent extends React.Component {
       }, 0)
       return
     }
+
+    if (nextLang == that.state.lang) return
 
     let dom = [...document.getElementById("article").childNodes].slice()
 
@@ -155,7 +197,8 @@ class ArticleContent extends React.Component {
     axios
       .post("/translate", {
         arr: translateArr,
-        lang: nextLang
+        lang: nextLang,
+        tld: that.state.bowserLang === "zh-CN" ? "cn" : "com"
       })
       .then(res => {
         const data = res.data[0]

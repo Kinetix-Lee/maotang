@@ -96,6 +96,6 @@ module.exports = {
   getRandomKey,
   md2html,
   parseUrl,
-  formatDate,
+  formatDate
   // translatePage
 }
