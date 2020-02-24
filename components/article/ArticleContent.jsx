@@ -2,9 +2,10 @@ import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
 import { isNight } from "../../public/static/js/tools"
-const cssUrl = `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-${
-  isNight() ? "dark" : "light"
-}.min.css`
+const cssUrl = isNight()
+  ? `https://cdn.bootcss.com/highlight.js/9.18.1/styles/atelier-sulphurpool-dark.min.css
+`
+  : `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-dark.min.css`
 import { parseMultiple } from "google-translate-open-api"
 import { Alert } from "antd"
 import axios from "axios"
