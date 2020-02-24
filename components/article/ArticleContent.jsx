@@ -89,9 +89,8 @@ class ArticleContent extends React.Component {
               id="translator"
               style={{ display: this.state.lang == "cn" ? "none" : "block" }}
             ></div>
-
-            <button onClick={this.translateIt}>哈哈</button>
           </article>
+          <button onClick={this.translateIt}>哈哈</button>
         </div>
       </div>
     )
