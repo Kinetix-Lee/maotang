@@ -56,7 +56,7 @@ class ArticleContent extends React.Component {
       for (let item in detail) {
         if (dic[item] && detail[item]) {
           __html += ["via", "repo"].includes(item)
-            ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</p>`
+            ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</a></p>`
             : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
         }
       }
