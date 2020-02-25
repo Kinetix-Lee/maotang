@@ -2,9 +2,18 @@
   {
     "id": "furazy-js",
     "title": "Furazy - 轻巧的小动物图片收集库",
-    "time": "2009-10-20 10:20",
+    "time": "2019-10-20 10:20",
     "brief": "owo",
     "category": ["前端", "爬虫", "furry", "项目"],
+    "repo": "https://github.com/Meeken1998/furazy-spider"
+  },
+
+  {
+    "id": "猫汤",
+    "title": "猫汤 - 自用的，SEO 友好的博客框架",
+    "time": "2020-01-30 22:23",
+    "brief": "owo",
+    "category": ["博客", "nextjs", "React", "项目", "koa", "同构"],
     "repo": "https://github.com/Meeken1998/furazy-spider"
   },
 
