@@ -17,19 +17,29 @@ class Category extends React.Component {
 
   render() {
     this.props.mainStore.getStaticInfo()
-    const date = this.props.router.asPath
-      .toLowerCase()
-      .replace("/archive/", "")
-      .replace("-", "/")
-    const list = this.props.mainStore.getArticlesByArchive(date).slice()
+    let list, date, category
+    if (this.props.router.asPath.includes("archive")) {
+      date = this.props.router.asPath
+        .toLowerCase()
+        .replace("/archive/", "")
+        .replace("-", "/")
+      list = this.props.mainStore.getArticlesByArchive(date).slice()
+    } else if (this.props.router.asPath.includes("category")) {
+      category = decodeURIComponent(
+        this.props.router.asPath.toLowerCase().replace("/category/", "")
+      )
+      list = this.props.mainStore.getArticlesByCategory(category).slice()
+    }
     if (list && list.length) {
       return (
         <div className="App main-page">
           <Head>
-            <title>{`${date} - ${SITE.title}`}</title>
+            <title>{`${date || category} - ${SITE.title}`}</title>
           </Head>
           <NavBar />
-          <AlertBar info={date.replace("/", " 年 ") + " 月"} />
+          <AlertBar
+            info={date ? date.replace("/", " 年 ") + " 月" : category}
+          />
           <ArticleList archive={list} />
           <div className="page-divider" />
           <Bottom show={true} />

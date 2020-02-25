@@ -19,6 +19,7 @@ class ArticleList extends React.Component {
   }
 
   render() {
+    const isLarge = this.props.large
     if (!this.props.archive) {
       if (
         currentList &&
@@ -27,7 +28,9 @@ class ArticleList extends React.Component {
       ) {
         return (
           <div className="wrapper">
-            <div className="block article-list">
+            <div
+              className={(isLarge ? "block-large" : "block") + " article-list"}
+            >
               {currentList.map(item => (
                 <div
                   key={getRandomKey()}
@@ -52,7 +55,9 @@ class ArticleList extends React.Component {
       } else {
         return (
           <div className="wrapper">
-            <div className="block article-list">
+            <div
+              className={(isLarge ? "block-large" : "block") + " article-list"}
+            >
               {this.props.mainStore.articleList.map(item => (
                 <div
                   key={getRandomKey()}
@@ -79,7 +84,9 @@ class ArticleList extends React.Component {
       const archiveList = this.props.archive
       return (
         <div className="wrapper">
-          <div className="block article-list">
+          <div
+            className={(isLarge ? "block-large" : "block") + " article-list"}
+          >
             {archiveList.map(item => (
               <div
                 key={getRandomKey()}
@@ -102,38 +109,6 @@ class ArticleList extends React.Component {
         </div>
       )
     }
-
-    // return (
-    //   <div className="wrapper">
-    //     <div className="block article-list">
-    //       {currentList && currentList.length > 0
-    //         ? currentList.map(item => (
-    //             <div
-    //               key={getRandomKey()}
-    //               className="article-item wow fadeIn animated"
-    //             >
-    //               <Link href={{ pathname: "/av/" + item.id }}>
-    //                 <a>{item.title}</a>
-    //               </Link>
-    //               <div className="brief">{item.time}</div>
-    //             </div>
-    //           ))
-    //         : this.props.mainStore.articleList.map(item => (
-    //             <div
-    //               key={getRandomKey()}
-    //               className="article-item wow fadeIn animated"
-    //             >
-    //               <Link href={{ pathname: "/av/" + item.id }}>
-    //                 <a>{item.title}</a>
-    //               </Link>
-    //               <div className="brief">{item.time}</div>
-    //             </div>
-    //           ))}
-    //       {/* {currentList.map(item => {
-    //         return <div>{item.time}</div>
-    //       })} */}
-    //     </div>
-    //   </div>
   }
 
   componentWillMount() {
