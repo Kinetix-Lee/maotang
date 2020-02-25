@@ -3,15 +3,53 @@ import { observer, inject } from "mobx-react"
 import marked from "marked"
 import { isNight } from "../../public/static/js/tools"
 const cssUrl = isNight()
-  ? `https://cdn.bootcss.com/highlight.js/9.18.1/styles/atelier-sulphurpool-dark.min.css
-`
-  : `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atom-one-dark.min.css`
+  ? `https://cdn.bootcss.com/highlight.js/9.15.10/styles/zenburn.min.css` //`https://cdn.bootcss.com/highlight.js/9.18.1/styles/atelier-sulphurpool-dark.min.css`
+  : `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atelier-forest-light.min.css`
 import { parseMultiple } from "google-translate-open-api"
 import { Alert } from "antd"
 import axios from "axios"
 
 const renderer = new marked.Renderer()
 let that, __html
+
+const formatHtml = function(__html, detail) {
+  const dic = {
+    via: "原文地址：",
+    time: "创建时间：",
+    update: "最后编辑：",
+    repo: "项目地址：",
+    category: "分类："
+  }
+  for (let item in detail) {
+    if (dic[item] && detail[item]) {
+      if (item == "category") {
+        __html += `<p style="opacity: 0.7;">${dic[item]}${
+          typeof detail.category == "string"
+            ? `<a href="/category/${detail.category}" target="_blank" style="margin-right: 0.5rem">${detail.category}</a>`
+            : detail.category
+                .map(
+                  item =>
+                    `<a href="/category/${item}" target="_blank" style="margin-right: 0.5rem">${item}</a>`
+                )
+                .join("")
+        }</p>`
+        continue
+      }
+      __html += ["via", "repo"].includes(item)
+        ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</a></p>`
+        : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
+    }
+  }
+
+  __html =
+    `<h1 class="article-title">${detail["title"]}</h1>${
+      detail["time"]
+        ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>`
+        : ""
+    }` + __html
+
+  return __html
+}
 
 marked.setOptions({
   renderer: renderer,
@@ -46,27 +84,7 @@ class ArticleContent extends React.Component {
     try {
       __html = require(`../../public/static/article/content/${this.props.id}.md`)
       const detail = this.props.mainStore.getArticleDetail(this.props.id)
-      const dic = {
-        via: "原文地址：",
-        time: "创建时间：",
-        update: "最后编辑：",
-        repo: "项目地址：",
-        category: "分类："
-      }
-      for (let item in detail) {
-        if (dic[item] && detail[item]) {
-          __html += ["via", "repo"].includes(item)
-            ? `<p style="opacity: 0.7;">${dic[item]}<a href="${detail[item]}" target="_blank">${detail[item]}</a></p>`
-            : `<p style="opacity: 0.7;">${dic[item]}${detail[item]}</p>`
-        }
-      }
-
-      __html =
-        `<h1 class="article-title">${detail["title"]}</h1>${
-          detail["time"]
-            ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>`
-            : ""
-        }` + __html
+      __html = formatHtml(__html, detail)
     } catch {
       __html =
         '<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">但故事的最后你好像还是说了拜～</div>'

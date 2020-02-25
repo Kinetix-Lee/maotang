@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar"
 import AlertBar from "../components/AlertBar"
 import Bottom from "../components/Bottom"
 import Head from "next/head"
-import { site as SITE } from "../public/static/config/mao.tang.json"
+import { site as SITE } from "../public/static/config/maotang.json"
 import ArchiveContainer from "../components/archive/ArchiveContainer"
 
 import { observer, inject } from "mobx-react"

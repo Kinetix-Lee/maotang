@@ -4,7 +4,7 @@ import AlertBar from "../components/AlertBar"
 import ArticleList from "../components/article/ArticleList"
 import Bottom from "../components/Bottom"
 import Head from "next/head"
-import { site as SITE } from "../public/static/config/mao.tang.json"
+import { site as SITE } from "../public/static/config/maotang.json"
 import { observer, inject } from "mobx-react"
 import ErrorPage from "./_error"
 

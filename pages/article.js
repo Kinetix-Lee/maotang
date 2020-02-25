@@ -4,7 +4,7 @@ import ArticleContent from "../components/article/ArticleContent"
 import Bottom from "../components/Bottom"
 import { parseUrl } from "../public/static/js/tools"
 import Head from "next/head"
-import { site as SITE } from "../public/static/config/mao.tang.json"
+import { site as SITE } from "../public/static/config/maotang.json"
 import ErrorPage from "./_error"
 
 class Article extends React.Component {
