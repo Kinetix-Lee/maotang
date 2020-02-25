@@ -100,5 +100,5 @@ $ yarn server-win
 
 WTF
 
-[1]: https://img.shields.io/github/license/meeken1998/maotang
+[1]: https://img.shields.io/github/license/Meeken1998/maotang
 [2]: https://img.shields.io/badge/site-%E6%BC%94%E7%A4%BA-red
