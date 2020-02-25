@@ -78,7 +78,8 @@ class SearchBox extends React.Component {
       searchList: that.props.mainStore.getArticlesByCategory(value).slice()
     })
     let href = window.location.href
-    history.pushState({}, "", href.includes("search/") ? e : "/search/" + e)
+    if (typeof e == "string")
+      history.pushState({}, "", href.includes("search/") ? e : "/search/" + e)
   }
 
   handleSearch(e) {
