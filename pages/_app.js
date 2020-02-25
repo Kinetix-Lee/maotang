@@ -7,7 +7,7 @@ import { configure } from "mobx"
 import { isNight } from "../public/static/js/tools"
 import Head from "next/head"
 import "../public/static/style/main.less"
-import { site as SITE } from "../public/static/config/mao.tang.json"
+import { site as SITE } from "../public/static/config/maotang.json"
 import { BackTop } from "antd"
 
 const isServer = !process.browser

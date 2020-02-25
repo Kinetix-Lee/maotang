@@ -14,7 +14,7 @@
 
 ##### 安装
 
-```bash
+```shell
 $ npm install furazy --save
 ```
 

@@ -4,7 +4,7 @@ import { BaseStore, getOrCreateStore } from "next-mobx-wrapper"
 let articles = []
 
 class Store extends BaseStore {
-  @observable menu = require("../public/static/config/mao.tang.json").menu
+  @observable menu = require("../public/static/config/maotang.json").menu
 
   @observable articlePage = 1
 
