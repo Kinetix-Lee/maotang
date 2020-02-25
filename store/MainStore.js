@@ -67,6 +67,41 @@ class Store extends BaseStore {
     return articles.filter(item => item._archive == archive)
   }
 
+  @action getArticlesByCategory(category) {
+    if (!category) return []
+    if (!this.articles.length) this.getStaticInfo()
+    let articles = this.articles.slice()
+    if (category == "all") {
+      const length = articles.length > 5 ? e : articles.length
+      return articles.slice(0, length)
+    }
+    return articles.filter(
+      item =>
+        (typeof item.category == "string" &&
+          item.category.toLowerCase().includes(category.toLowerCase())) ||
+        (item.category instanceof Array &&
+          item.category
+            .join("")
+            .toLowerCase()
+            .includes(category.toLowerCase())) ||
+        item.title.toLowerCase().includes(category.toLowerCase())
+    )
+  }
+
+  @action getCategoryList() {
+    if (!this.articles.length) this.getStaticInfo()
+    const articles = this.articles.slice()
+    let list = []
+    articles.forEach(item => {
+      if (item.category) {
+        if (typeof item.category == "string") list.push(item.category)
+        if (item.category instanceof Array) list = list.concat(item.category)
+      }
+    })
+
+    list = [...new Set(list)]
+    return list
+  }
 
   @action getArchiveList() {
     if (this.archives.length > 0 && this.archivesCount)

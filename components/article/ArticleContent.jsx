@@ -104,7 +104,7 @@ class ArticleContent extends React.Component {
                 </div>
               </div>
             }
-            type={isNight() ? "warning" : "success"}
+            type="warning"
           />
           <article>
             <div

@@ -45,6 +45,20 @@ const startServer = async () => {
         await app.render(ctx.req, ctx.res, "/category", ctx.query)
         ctx.respond = false
       })
+      .get("/category/:id", async ctx => {
+        await app.render(ctx.req, ctx.res, "/category", ctx.query)
+        ctx.respond = false
+      })
+
+    router
+      .get("/search", async ctx => {
+        await app.render(ctx.req, ctx.res, "/search", ctx.query)
+        ctx.respond = false
+      })
+      .get("/search/:id", async ctx => {
+        await app.render(ctx.req, ctx.res, "/search", ctx.query)
+        ctx.respond = false
+      })
 
     router.use(bodyParser())
 

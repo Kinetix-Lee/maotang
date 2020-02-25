@@ -4,6 +4,7 @@
     "title": "Furazy - 轻巧的小动物图片收集库",
     "time": "2009-10-20 10:20",
     "brief": "owo",
+    "category": ["前端"],
     "repo": "https://github.com/Meeken1998/furazy-spider"
   },
 
@@ -11,6 +12,7 @@
     "id": "观动物狂想曲有感",
     "title": "观《动物狂想曲》有感",
     "time": "2020-2-21 10:30",
+    "category": ["随笔"],
     "brief": "owo"
   },
 
@@ -18,6 +20,7 @@
     "id": "22岁生日",
     "title": "我的 22 岁生日",
     "time": "2020-2-22 10:30",
+    "category": ["随笔"],
     "brief": "owo"
   },
 
@@ -25,6 +28,7 @@
     "id": "病中小记",
     "title": "病中小记",
     "time": "2020-02-25 0:20",
+    "category": ["随笔"],
     "brief": "owo"
   }
 ]
