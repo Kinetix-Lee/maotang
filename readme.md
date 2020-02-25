@@ -4,7 +4,7 @@
 
 猫汤是一款我自用的，简洁的、SEO 友好的博客框架，基于 React。
 
-[![][1]](https://github.com/Meeken1998/furazy-spider)
+[![][1]](https://github.com/Meeken1998/maotang)
 [![][2]](https://maotang.meek3n.cn)
 
 ## 特点
@@ -16,22 +16,22 @@
 5. SEO 友好
 6. 自动化部署脚本
 
-### 使用说明
+## 使用说明
 
-#### 下载
+### 下载
 
 ```shell
 $ git clone https://github.com/Meeken1998/maotang
 $ cd maotang
 ```
 
-#### 安装依赖
+### 安装依赖
 
 ```shell
 $ yarn #推荐使用 yarn 来安装依赖，也可以用 npm install
 ```
 
-#### 启动
+### 启动
 
 **Linux/Mac 环境**
 
@@ -49,7 +49,7 @@ $ yarn build #编译
 $ yarn server-win
 ```
 
-#### 使用
+### 使用
 
 **网站信息配置**
 
