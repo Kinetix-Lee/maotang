@@ -53,6 +53,10 @@ class MyApp extends App {
               content={SITE.description}
             />
             <meta name="keywords" content={SITE.keywords} />
+            <meta
+              name="viewport"
+              content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
+            />
           </Head>
           <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
           <script src="https://img.meek3n.cn/cdn/pace.min.js"></script>
