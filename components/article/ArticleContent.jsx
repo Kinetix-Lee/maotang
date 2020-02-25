@@ -44,7 +44,7 @@ const formatHtml = function(__html, detail) {
   __html =
     `<h1 class="article-title">${detail["title"]}</h1>${
       detail["time"]
-        ? `<p><small style="margin-bottom: 4rem;">${detail["time"]}</small></p>`
+        ? `<p style="margin-bottom: 3rem !important;"><small>${detail["time"]}</small></p>`
         : ""
     }` + __html
 
