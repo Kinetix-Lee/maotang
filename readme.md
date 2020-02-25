@@ -9,29 +9,29 @@
 
 ## 特点
 
-1. [x]极简风格，昼夜双版
-2. [x]文档式阅读体验
-3. [x]渲染 markdown，无数据库依赖
-4. [x]速度优于一些 PHP 博客框架
-5. [x]SEO 友好
-6. [ ]自动化部署脚本
+1. 极简风格，昼夜双版
+2. 文档式阅读体验
+3. 渲染 markdown，无数据库依赖
+4. 速度优于一些 PHP 博客框架
+5. SEO 友好
+6. 自动化部署脚本
 
 ### 使用说明
 
-##### 下载
+#### 下载
 
 ```shell
 $ git clone https://github.com/Meeken1998/maotang
 $ cd maotang
 ```
 
-##### 安装依赖
+#### 安装依赖
 
 ```shell
 $ yarn #推荐使用 yarn 来安装依赖，也可以用 npm install
 ```
 
-##### 启动
+#### 启动
 
 **Linux/Mac 环境**
 
@@ -49,7 +49,7 @@ $ yarn build #编译
 $ yarn server-win
 ```
 
-##### 使用
+#### 使用
 
 **网站信息配置**
 
