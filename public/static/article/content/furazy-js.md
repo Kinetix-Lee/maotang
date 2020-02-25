@@ -96,7 +96,7 @@ searchIt()
 MIT
 
 [1]: https://img.shields.io/npm/v/furazy.svg
-[2]: https://img.shields.io/github/license/meeken1998/furazy-spider
+[2]: https://img.shields.io/badge/license-MIT-green
 [3]: https://img.shields.io/badge/runkit-%E8%B0%83%E8%AF%95-blue
 
 ---
