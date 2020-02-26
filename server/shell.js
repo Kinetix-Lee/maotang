@@ -27,6 +27,6 @@ const main = async function() {
   await _exec("git add .")
   await _exec("git commit -m 'fixed'")
   await _exec("git push gitee master")
-}
+} 
 
 main()
