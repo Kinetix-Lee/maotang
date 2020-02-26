@@ -19,7 +19,10 @@ const main = async function() {
   config = await _exec("cat ./public/static/config/maotang.json", true)
   config = JSON.parse(config)
   await _exec("cd ./public/static/article")
-  await _exec("git submodule init")
+  await _exec(
+    `git config user.name ${config.origin.username} && git config user.email ${config.origin.useremail}`
+  )
+  await _exec("git init")
   await _exec("git add .")
   await _exec(
     `git commit -m '${
