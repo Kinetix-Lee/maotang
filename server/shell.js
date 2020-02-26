@@ -17,9 +17,20 @@ const _exec = function(shell) {
   })
 }
 
-_exec(
-  "cat ./public/static/config/maotang.json && git add . && git commit -m 'fixed' && git push"
+process.exec(
+  "cat ./public/static/config/maotang.json && git add . && git commit -m 'fixed' && git push",
+  (error, stdout, stderr) => {
+    if (error) {
+      console.error(`错误： ${error}`)
+    }
+    if (!error) {
+      console.log(`成功：${stdout}`)
+    }
+    console.log(`错误：${stderr}`)
+  }
 )
+
+_exec()
   .then(res => {
     console.log(res)
   })
