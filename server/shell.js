@@ -21,7 +21,7 @@ const main = async function() {
     config = JSON.parse(config)
     await _exec("git pull gitee master && sudo yarn build")
   } catch (err) {
-    console.log("报错：" + err)
+    
   }
 }
 
