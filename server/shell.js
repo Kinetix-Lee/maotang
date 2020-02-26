@@ -4,10 +4,8 @@ const _exec = function(shell) {
   return new Promise((resolve, reject) => {
     process.exec(shell, (error, stdout, stderr) => {
       if (error) {
-        console.error(`错误：${error}`)
         reject(error)
       } else {
-        console.log(`成功：${stdout}`)
         resolve(stdout)
       }
     })
