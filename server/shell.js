@@ -25,7 +25,7 @@ process.exec(
   }
 )
 
-_exec("echo 1")
+_exec("git add .")
   .then(res => {
     console.log(res)
   })
