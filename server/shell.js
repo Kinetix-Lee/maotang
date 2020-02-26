@@ -1,4 +1,5 @@
 const process = require("child_process")
+let config = {}
 
 const _exec = function(shell, isHidden = false) {
   return new Promise((resolve, reject) => {
@@ -14,19 +15,22 @@ const _exec = function(shell, isHidden = false) {
   })
 }
 
-// _exec("git init && git add . && git commit -m 'fixed' && git push")
-//   .then(res => {
-//     console.log(res)
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   })
-
 const main = async function() {
+  config = await _exec("cat ./public/static/config/maotang.json", true)
+  config = JSON.parse(config)
+  await _exec("cd ./public/static/article")
   await _exec("git init")
   await _exec("git add .")
-  await _exec("git commit -m 'fixed'")
-  await _exec("git push gitee master")
+  await _exec(
+    `git commit -m '${
+      config.origin.username
+    }提交于${new Date().toLocaleString()}'`
+  )
+  await _exec(`git remote add origin ${config.origin.repo}`)
+  await _exec(`git push -u origin master`)
+  // await _exec("git add .")
+  // await _exec("git commit -m 'fixed'")
+  // await _exec("git push gitee master")
 }
 
 try {

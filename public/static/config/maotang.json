@@ -22,5 +22,11 @@
       "href": "/category/项目",
       "context": "项目"
     }
-  ]
+  ],
+
+  "origin": {
+    "repo": "https://gitee.com/meeken/maotang-articles.git",
+    "username": "Meeken",
+    "useremail": "78071836@qq.com"
+  }
 }
