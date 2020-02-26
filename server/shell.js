@@ -29,8 +29,8 @@ const main = async function() {
       config.origin.username
     }提交于${new Date().toLocaleString()}'`
   )
-  await _exec(`git remote add origin ${config.origin.repo}`)
-  await _exec(`git push -u origin master`)
+  // await _exec(`git remote add article ${config.origin.repo}`)
+  await _exec(`git push -u article master`)
   // await _exec("git add .")
   // await _exec("git commit -m 'fixed'")
   // await _exec("git push gitee master")
