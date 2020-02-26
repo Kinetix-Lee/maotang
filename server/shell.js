@@ -30,7 +30,7 @@ process.exec(
   }
 )
 
-_exec()
+_exec('echo 1')
   .then(res => {
     console.log(res)
   })
