@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.jpeg">
+</p>
+
 一款基于 React、Next.js 的轻博客框架。
 
 ## 猫汤
