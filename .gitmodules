@@ -1,0 +1,3 @@
+[submodule "public/static/article/maotang-articles"]
+	path = public/static/article/maotang-articles
+	url = https://gitee.com/meeken/maotang-articles.git
