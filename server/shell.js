@@ -19,6 +19,10 @@ const _exec = function(shell) {
 
 _exec(
   "cat ./public/static/config/maotang.json && git add . && git commit -m 'fixed' && git push"
-).then(res => {
-  console.log(res)
-})
+)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
