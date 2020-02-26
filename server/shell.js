@@ -7,6 +7,7 @@ const _exec = function(shell, isHidden = false) {
         reject(error)
       } else {
         if (!isHidden) console.log(stdout)
+        if (stderr) console.log(stderr)
         resolve(stdout)
       }
     })
