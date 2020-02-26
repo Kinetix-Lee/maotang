@@ -24,6 +24,7 @@ const main = async function() {
   )
   await _exec("git init")
   await _exec("git add .")
+  await _exec("pwd")
   await _exec(
     `git commit -m '${
       config.origin.username
