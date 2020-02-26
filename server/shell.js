@@ -4,15 +4,12 @@ const _exec = function(shell) {
   return new Promise((resolve, reject) => {
     process.exec(shell, (error, stdout, stderr) => {
       if (error) {
-        console.error(`错误： ${error}`)
+        console.error(`错误：${error}`)
         reject(error)
-      }
-      if (!error) {
+      } else {
         console.log(`成功：${stdout}`)
         resolve(stdout)
       }
-      console.log(`错误：${stderr}`)
-      reject(error)
     })
   })
 }
@@ -30,7 +27,7 @@ process.exec(
   }
 )
 
-_exec('echo 1')
+_exec("echo 1")
   .then(res => {
     console.log(res)
   })
