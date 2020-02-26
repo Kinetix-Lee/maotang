@@ -16,29 +16,13 @@ const _exec = function(shell, isHidden = false) {
 }
 
 const main = async function() {
-  config = await _exec("cat ./public/static/config/maotang.json", true)
-  config = JSON.parse(config)
-  await _exec("cd ./public/static/article")
-  await _exec(
-    `git config user.name ${config.origin.username} && git config user.email ${config.origin.useremail}`
-  )
-  await _exec("git init")
-  await _exec("git add .")
-  await _exec("pwd")
-  await _exec(
-    `git commit -m '${
-      config.origin.username
-    }提交于${new Date().toLocaleString()}'`
-  )
-  // await _exec(`git remote add article ${config.origin.repo}`)
-  await _exec(`git push -u article master`)
-  // await _exec("git add .")
-  // await _exec("git commit -m 'fixed'")
-  // await _exec("git push gitee master")
+  try {
+    config = await _exec("cat ./public/static/config/maotang.json", true)
+    config = JSON.parse(config)
+    await _exec("git pull gitee master && sudo yarn build")
+  } catch (err) {
+    console.log("报错：" + err)
+  }
 }
 
-try {
-  main()
-} catch (err) {
-  console.log("报错：" + err)
-}
+main()
