@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.jpeg">
+  <img src="banner.gif">
 </p>
 
 一款基于 React、Next.js 的轻博客框架。
@@ -57,7 +57,7 @@ $ yarn server-win
 
 **网站信息配置**
 
-请找到 `./src/public/static/config/maotang.json`，修改网站的配置信息（Next.js 约定中间层与浏览器端共用的静态目录为 ./src/public/static/）。
+请找到 `./src/public/static/config/maotang.json`，修改网站的配置信息（[Next.js](https://nextjs.frontendx.cn/) 约定中间层与浏览器端共用的静态目录为 `public` 目录。
 
 ```json
 {
@@ -90,10 +90,23 @@ $ yarn server-win
 
 **新建/修改文章**
 
-- 文章存放目录： `./src/public/static/article/content`
-- 文章标题信息： `./src/public/static/article/list.json`
+- [文章存放目录](/src/public/static/article)： `./src/public/static/article/content`
+- [文章标题信息](/src/public/static/article/list.json)： `./src/public/static/article/list.json`
 
 或者使用更优雅的自动化部署脚本（开发中 XD）。
+
+**更改图标与网站头部信息**
+
+- [修改网站图标](src/public/static/favicon.ico)： `./src/public/static/favicon.ico`
+- [网站头部信息](src/pages/_app.js)： `./src/pages/_app.js`
+
+**二次开发告知**
+
+首先，非常感谢您关注猫汤博客。您可以任意使用这份代码，同时请务必在网站中加入这个仓库的地址。
+由于猫汤目前暂且是鄙人自用，很多功能都没有添加进去（如：博客后台、自动化 CLI 工具、图片管理等）。
+如您需要使用这份代码，而在使用过程中遇到了困难和疑惑，可以提 issue 或联系 meeken#authing.cn。
+
+这份代码比较适合 React 与同构知识初学者使用，欢迎 star，欢迎 fork ～
 
 ### 联系作者
 
