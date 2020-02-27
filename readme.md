@@ -57,7 +57,7 @@ $ yarn server-win
 
 **网站信息配置**
 
-请找到 `./src/public/static/config/maotang.json`，修改网站的配置信息（[Next.js](https://nextjs.frontendx.cn/) 约定中间层与浏览器端共用的静态目录为 `public` 目录。
+请找到 `./public/static/config/maotang.json`，修改网站的配置信息（[Next.js](https://nextjs.frontendx.cn/) 约定中间层与浏览器端共用的静态目录为 `public` 目录。
 
 ```json
 {
@@ -90,15 +90,15 @@ $ yarn server-win
 
 **新建/修改文章**
 
-- [文章存放目录](/src/public/static/article)： `./src/public/static/article/content`
-- [文章标题信息](/src/public/static/article/list.json)： `./src/public/static/article/list.json`
+- [文章存放目录](/public/static/article)： `./public/static/article/content`
+- [文章标题信息](/public/static/article/list.json)： `./public/static/article/list.json`
 
 或者使用更优雅的自动化部署脚本（开发中 XD）。
 
 **更改图标与网站头部信息**
 
-- [修改网站图标](src/public/static/favicon.ico)： `./src/public/static/favicon.ico`
-- [网站头部信息](src/pages/_app.js)： `./src/pages/_app.js`
+- [修改网站图标](/public/static/favicon.ico)： `./public/static/favicon.ico`
+- [网站头部信息](/pages/_app.js)： `./pages/_app.js`
 
 **二次开发告知**
 
