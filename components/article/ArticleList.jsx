@@ -59,10 +59,7 @@ class ArticleList extends React.Component {
               className={(isLarge ? "block-large" : "block") + " article-list"}
             >
               {this.props.mainStore.articleList.map(item => (
-                <div
-                  key={getRandomKey()}
-                  className="article-item wow fadeIn animated"
-                >
+                <div key={getRandomKey()} className="article-item show">
                   <Link href={"/blog/" + item.id}>
                     <a>{item.title}</a>
                   </Link>
