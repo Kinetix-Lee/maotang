@@ -97,7 +97,7 @@ $ yarn server-win
 
 **更改图标与网站头部信息**
 
-- [修改网站图标](/public/favicon.ico)： `./public/favicon.ico`
+- [修改网站图标](/public)： `./public`
 - [网站头部信息](/pages/_app.js)： `./pages/_app.js`
 
 **二次开发告知**
