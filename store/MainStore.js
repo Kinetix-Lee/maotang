@@ -72,7 +72,7 @@ class Store extends BaseStore {
     if (!this.articles.length) this.getStaticInfo()
     let articles = this.articles.slice()
     if (category == "all") {
-      const length = articles.length > 5 ? e : articles.length
+      const length = articles.length > 5 ? 5 : articles.length
       return articles.slice(0, length)
     }
     return articles.filter(
