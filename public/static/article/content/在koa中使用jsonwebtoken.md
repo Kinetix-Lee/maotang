@@ -294,7 +294,7 @@ const verifyToken = function(token = "", isNormal = true) {
   iat: 1532135735, // token 创建时间戳（10 位， 精确到秒）
   exp: 1532136735, // token 过期时间戳
   username: 'Meeken', // 用户名
-  _id: 1' // 用户 id
+  _id: 1 // 用户 id
 }
 ```
 
