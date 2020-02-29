@@ -1,14 +1,14 @@
 Node.js 写个简单的七牛云上传命令行工具
 
-## 0.成品
+### 0.成品
 
 效果大概就是这样啦，这张图正是用这个小工具上传的：
 
 ![][1]
 
-## 1.代码
+### 1.代码
 
-### 1.1 `package.json`，可以参考
+#### 1.1 `package.json`，可以参考
 
 ```json
 {
@@ -34,7 +34,7 @@ Node.js 写个简单的七牛云上传命令行工具
 }
 ```
 
-### 1.2 `index.js`
+#### 1.2 `index.js`
 
 ```js
 #!usr/bin/env node
@@ -117,7 +117,7 @@ const main = async function() {
 main()
 ```
 
-### 1.3 `module/qiniu.js`
+#### 1.3 `module/qiniu.js`
 
 ```js
 const qiniu = require("qiniu")
@@ -209,7 +209,7 @@ module.exports = {
 
 ```
 
-## 2.运行
+### 2.运行
 
 ```shell
 $ npm run start # 或者直接 node .
