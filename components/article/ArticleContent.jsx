@@ -2,9 +2,7 @@ import React from "react"
 import { observer, inject } from "mobx-react"
 import marked from "marked"
 import { isNight } from "../../public/static/js/tools"
-const cssUrl = isNight()
-  ? `https://cdn.bootcss.com/highlight.js/9.15.10/styles/zenburn.min.css` //`https://cdn.bootcss.com/highlight.js/9.18.1/styles/atelier-sulphurpool-dark.min.css`
-  : `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atelier-forest-light.min.css`
+
 import { parseMultiple } from "google-translate-open-api"
 import { Alert } from "antd"
 import axios from "axios"
@@ -81,6 +79,10 @@ class ArticleContent extends React.Component {
   }
 
   render() {
+  	const cssUrl = isNight()
+  ? `https://cdn.bootcss.com/highlight.js/9.15.10/styles/zenburn.min.css` //`https://cdn.bootcss.com/highlight.js/9.18.1/styles/atelier-sulphurpool-dark.min.css`
+  : `https://cdn.bootcss.com/highlight.js/9.15.10/styles/atelier-forest-light.min.css`
+  
     try {
       __html = require(`../../public/static/article/content/${this.props.id}.md`)
       const detail = this.props.mainStore.getArticleDetail(this.props.id)
