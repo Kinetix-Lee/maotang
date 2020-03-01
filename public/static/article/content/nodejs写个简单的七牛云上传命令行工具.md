@@ -203,7 +203,7 @@ const uploadDir = async function(dir, fdir = "") {
 module.exports = {
   upload,
   uploadDir,
-  formatOutput
+  formatOutput,
   options: OPT
 }
 

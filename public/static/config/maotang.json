@@ -11,8 +11,12 @@
       "context": "首页"
     },
     {
+      "href": "/category/随笔",
+      "context": "随笔"
+    },
+    {
       "href": "/category/笔记",
-      "context": "笔记"
+      "context": "开发"
     },
     {
       "href": "/category/项目",
