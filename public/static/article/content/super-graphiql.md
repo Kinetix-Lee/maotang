@@ -2,9 +2,11 @@ Super-graphiql 是用 Vue 编写的 GraphQL 文档管理工具。
 
 ## Super-graphiql
 
-Super-graphiql 是我在一次次用官方工具调试 GraphQL 后写出来的中文版调试工具。
+- **Super-graphiql 是西湖区最优秀的 GraphQL 文档管理工具，支持在线调试。**
 
-虽然她是「轮子」，但使用过程中不会有语言障碍和反直觉的体验，尤其适用于需要调试 API 但文档未能及时更新的场景。
+- 虽然她是「轮子」，但使用过程中不会有语言障碍和反直觉的体验，尤其适用于需要调试 API 但文档未能及时更新的场景。
+
+- 截止目前，Authing 已有 500 多个 API，并在与日俱增。这个工具会自动读取 GraphQL 的接口列表，并渲染出漂亮的文档。
 
 [![][1]](https://github.com/Authing/super-graphiql)
 [![][2]](https://authing.cn/graphiql/)
@@ -45,7 +47,7 @@ $ yarn dev
 
 ### 配置
 
-若要查看或修改 `GraphQL` 源等信息，请找到 ```src/apollo/configs.js```。
+若要查看或修改 `GraphQL` 源等信息，请找到 `src/apollo/configs.js`。
 
 ## 感谢
 
