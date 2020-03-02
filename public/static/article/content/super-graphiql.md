@@ -1,15 +1,18 @@
 Super-graphiql 是用 Vue 编写的 GraphQL 文档管理工具。
 
-## Super-graphiql
+## 介绍
 
-- **Super-graphiql 是西湖区最优秀的 GraphQL 文档管理工具，支持在线调试。**
+**Super-graphiql 是西湖区最优秀的 GraphQL 文档管理工具，支持在线调试。**
+
+[![][1]](https://github.com/Authing/super-graphiql)
+[![][2]](https://authing.cn/graphiql/)
+
 
 - 虽然她是「轮子」，但使用过程中不会有语言障碍和反直觉的体验，尤其适用于需要调试 API 但文档未能及时更新的场景。
 
 - 截止目前，Authing 已有 500 多个 API，并在与日俱增。这个工具会自动读取 GraphQL 的接口列表，并渲染出漂亮的文档。
 
-[![][1]](https://github.com/Authing/super-graphiql)
-[![][2]](https://authing.cn/graphiql/)
+> GraphQL 是一门为 API 和运行时而生的查询语言。它可以使用您已有的数据对这些查询进行填充。GraphQL 在您的 API 中，提供了一个完整的，易于理解的数据描述，可以给予您的客户端一个权利，可以精确地描述他们所需要的数据，并不拖泥带水。随着时间的推移，使得 API 的进化更加容易，并且开启强大的开发者工具。
 
 ## 特点
 
