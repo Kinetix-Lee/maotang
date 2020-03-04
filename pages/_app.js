@@ -67,10 +67,10 @@ class MyApp extends App {
           ></link>
           <Component {...this.props} />
         </div>
-        <script
-          type="text/javascript"
-          src="//js.users.51.la/20672705.js"
-        ></script>
+        <img
+          src="https://ia.51.la/go1?id=20672713&pvFlag=1"
+          style={{ opacity: "0" }}
+        ></img>
         <BackTop />
       </Provider>
     )
