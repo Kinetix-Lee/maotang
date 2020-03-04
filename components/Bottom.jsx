@@ -21,7 +21,9 @@ class Bottom extends React.Component {
               : "")
           }
         >
-          <footer>© 2020 Meeken</footer>
+          <footer>
+            <a href="https://meek3n.cn">© 2020 Meeken</a>
+          </footer>
         </div>
       </div>
     )
