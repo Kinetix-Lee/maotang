@@ -67,7 +67,10 @@ class MyApp extends App {
           ></link>
           <Component {...this.props} />
         </div>
-
+        <script
+          type="text/javascript"
+          src="//js.users.51.la/20672705.js"
+        ></script>
         <BackTop />
       </Provider>
     )
