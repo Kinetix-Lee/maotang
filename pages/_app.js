@@ -69,7 +69,7 @@ class MyApp extends App {
         </div>
         <img
           src="https://ia.51.la/go1?id=20672713&pvFlag=1"
-          style={{ opacity: "0", position: "fixed", zIndex: "-1" }}
+          style={{ opacity: "0", position: "fixed", zIndex: "-2" }}
         ></img>
         <BackTop />
       </Provider>
