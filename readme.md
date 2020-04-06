@@ -32,7 +32,7 @@ $ cd maotang
 ### 安装依赖
 
 ```shell
-$ yarn #推荐使用 yarn 来安装依赖，也可以用 npm install
+$ yarn #or: npm install
 ```
 
 ### 启动
