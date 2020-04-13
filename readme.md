@@ -93,7 +93,7 @@ $ yarn server-win
 - [文章存放目录](/public/static/article/content)： `./public/static/article/content`
 - [文章标题信息](/public/static/article/list.json)： `./public/static/article/list.json`
 
-或者使用更优雅的自动化部署脚本（开发中 XD）。
+或者使用更优雅的自动化部署脚本。
 
 **更改图标与网站头部信息**
 
